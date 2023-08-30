@@ -1,3 +1,3 @@
 # Website
 
-yes
+Website made with SvelteKit
