@@ -21,9 +21,15 @@
     a {
         font-family: 'Poppins', sans-serif;
         text-decoration: none;
-        font-weight: 550;
+        font-weight: 500;
         padding: 15px;
         color: white;
-        opacity: 15%
+        opacity: 17%;
+        transition: all 100ms ease-in-out;
+    }
+
+    a:hover {
+        opacity: 30%;
+        cursor: pointer;
     }
 </style>
