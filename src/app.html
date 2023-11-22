@@ -1,32 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" href="%sveltekit.assets%/goob.png" />  <!--UPDATE IN FINAL VERSION-->
-		<title>goob</title> 									<!--UPDATE IN FINAL VERSION-->
-		<meta name="viewport" content="width=device-width" />
-		%sveltekit.head%
 
-		<style>
-			@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-    		@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Zeyada&display=swap');
+<head>
+	<meta charset="utf-8" />
+	<link rel="icon" href="%sveltekit.assets%/goob.png" /> <!--UPDATE IN FINAL VERSION-->
+	<title>goob</title> <!--UPDATE IN FINAL VERSION-->
+	<meta name="viewport" content="width=device-width" />
+	%sveltekit.head%
 
-			body{
-				background-color: #1A2121;
-			}
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=EB+Garamond&family=Poppins&family=Zeyada&display=swap');
 
-			::-moz-selection { /* Code for Firefox */
-			  color: #1A2120;
-			  background: #FFCC01;
-			}
+		* {
+			color: #fff;
+			font-family: 'Poppins', sans-serif;
+			margin: 0;
+			padding: 0;
+		}
 
-			::selection {
-			  color: #1A2120;
-			  background: #FFCC01;
-			}
-		</style>
-	</head>
-	<body data-sveltekit-preload-data="hover">
-		<div style="display: contents">%sveltekit.body%</div>
-	</body>
+		body {
+			background-color: #1A2121;
+		}
+
+		/*Select*/
+
+		::-moz-selection {
+			/* Code for Firefox */
+			color: #1A2120;
+			background: #FFCC01;
+		}
+
+		::selection {
+			color: #1A2120;
+			background: #FFCC01;
+		}
+
+		/*Scrollbar*/
+
+		::-webkit-scrollbar {
+			width: 10px;
+		}
+
+		::-webkit-scrollbar-track {
+			background: #f1f1f10c;
+		}
+
+		::-webkit-scrollbar-thumb {
+			background: #ffffff2f;
+			border-radius: 2px;
+		}
+
+		::-webkit-scrollbar-thumb:hover {
+			background: #FFCC01;
+			transition-timing-function: ease-in-out;
+		}
+	</style>
+</head>
+
+<body data-sveltekit-preload-data="hover">
+	<div style="display: contents">%sveltekit.body%</div>
+</body>
+
 </html>

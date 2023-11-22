@@ -11,11 +11,12 @@
 <slot />
 
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat&family=EB+Garamond&family=Meow+Script&family=Poppins&display=swap');
 
-	nav {
+    nav {
         display: grid;
         place-items: center;
+        padding-top: 10px;
 	}
 
     a {
