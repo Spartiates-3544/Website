@@ -81,15 +81,27 @@
 	#slide1{
         height: 100vh;
     }
+
+	#spartiates{
+		position: relative;
+	}
+
+	#spartiates::after{
+		content: '3544 & 20274';
+		position: absolute;
+		transform: skew(-10deg, -15deg);
+		font-family: 'Caveat', cursive;
+		color: #ffcc01;
+		font-size: 30%;
+		width: 200px;
+		bottom: 10%;
+		right: -25%;
+	}
 </style>
 
 <main id="mainContainer">
 	<section id="slide1">
-		<p class="headers">We are <br /> the <i style="font-family: inherit;">Spartiates</i></p>
-		<div id="teamNb">
-			<p class="handwritten">3544 & 20274</p>
-		</div>
-
+		<p class="headers">We are <br /> the <i style="font-family: inherit;" id="spartiates">Spartiates</i></p>
 		<section id="mainImgCarousel">
 			<div id="arrowContainer">
 				<svg

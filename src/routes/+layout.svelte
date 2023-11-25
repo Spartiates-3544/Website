@@ -17,6 +17,7 @@
         display: grid;
         place-items: center;
         padding-top: 10px;
+        z-index: 99;
 	}
 
     a {
@@ -25,7 +26,7 @@
         font-weight: 500;
         padding: 15px;
         color: white;
-        opacity: 17%;
+        opacity: 20%;
         transition: all 100ms ease-in-out;
     }
 
