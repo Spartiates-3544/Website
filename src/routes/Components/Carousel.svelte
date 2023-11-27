@@ -1,5 +1,5 @@
 <script>
-    export let components, height, gap, width;;
+    export let components, height, gap, width, borderRadius;
 </script>
 
 <style>
@@ -29,10 +29,11 @@
         height: var(--height);
         background-position: center;
         background-size: cover;
+        border-radius: var(--borderRadius);
     }
 </style>
 
-<div id="container" style="--componentsLength: {components.length}; --height: {height}; --gap: {gap}; --width: {width};">
+<div id="container" style="--componentsLength: {components.length}; --height: {height}; --gap: {gap}; --width: {width}; --borderRadius: {borderRadius};">
     <div class="imgContainer">
         {#each components as component}
             <div style="background-image: url({component});"></div>
