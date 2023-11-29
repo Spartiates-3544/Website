@@ -2,7 +2,7 @@
 	<div>
 		<a href="/">Home</a>
 		<a href="https://www.chiefdelphi.com/u/hyute/summary">Blog</a>
-		<a href="/Ressources">Ressources</a>
+		<a href="/Ressources">Resources</a>
 		<a href="/Sponsors">Sponsors</a>
 		<a href="/Contact">Contact Us</a>
 	</div>
