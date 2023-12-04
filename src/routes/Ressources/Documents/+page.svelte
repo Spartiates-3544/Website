@@ -22,7 +22,7 @@
     }
 
     .title{
-        margin-bottom: 30px;
+        margin-bottom: 15px;
         color: #ffcc01;
         font-size: 120%;
     }
@@ -68,7 +68,7 @@
         padding-left: 55px;
     }
 
-    #comment, #metaData, #download{
+    #metaData, #download{
         opacity: 20%;
         margin-bottom: 15px;
         transition: 100ms;
@@ -105,7 +105,6 @@
         </section>
         <section id="docInfo">
             <p class="title">{documentName}</p>
-            <p id="comment">Comment: {comment}</p>
             <div id="metaData">
                 <p id="fileSize">Size: {fileSize}</p>
                 <p id="uploadDate">Upload date: {uploadDate}</p>

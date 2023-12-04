@@ -1,0 +1,299 @@
+[debug] [2023-12-04T20:49:07.168Z] ----------------------------------------------------------------------
+[debug] [2023-12-04T20:49:07.169Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Nicky Ly\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2023-12-04T20:49:07.170Z] CLI Version:   12.9.1
+[debug] [2023-12-04T20:49:07.170Z] Platform:      win32
+[debug] [2023-12-04T20:49:07.170Z] Node Version:  v18.5.0
+[debug] [2023-12-04T20:49:07.171Z] Time:          Mon Dec 04 2023 15:49:07 GMT-0500 (Eastern Standard Time)
+[debug] [2023-12-04T20:49:07.171Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-12-04T20:49:07.177Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-12-04T20:49:07.178Z] > authorizing via signed-in user (ly451462@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\Nicky Ly\Documents\GitHub\Website
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2023-12-04T20:49:42.418Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=100
+[debug] [2023-12-04T20:49:42.857Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2023-12-04T20:49:42.857Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[info] i  Using project roboticstest-3544 (roboticsTest) 
+[info] 
+=== Database Setup
+[info] i  database: ensuring required API firebasedatabase.googleapis.com is enabled... 
+[debug] [2023-12-04T20:49:43.490Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/roboticstest-3544/services/firebasedatabase.googleapis.com [none]
+[debug] [2023-12-04T20:49:43.490Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/roboticstest-3544/services/firebasedatabase.googleapis.com x-goog-quota-user=projects/roboticstest-3544
+[debug] [2023-12-04T20:49:43.945Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/roboticstest-3544/services/firebasedatabase.googleapis.com 200
+[debug] [2023-12-04T20:49:43.946Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/roboticstest-3544/services/firebasedatabase.googleapis.com [omitted]
+[info] +  database: required API firebasedatabase.googleapis.com is enabled 
+[info] 
+[debug] [2023-12-04T20:49:43.948Z] >>> [apiv2][query] GET https://firebasedatabase.googleapis.com/v1beta/projects/roboticstest-3544/locations/-/instances/roboticstest-3544-default-rtdb [none]
+[debug] [2023-12-04T20:49:44.327Z] <<< [apiv2][status] GET https://firebasedatabase.googleapis.com/v1beta/projects/roboticstest-3544/locations/-/instances/roboticstest-3544-default-rtdb 200
+[debug] [2023-12-04T20:49:44.328Z] <<< [apiv2][body] GET https://firebasedatabase.googleapis.com/v1beta/projects/roboticstest-3544/locations/-/instances/roboticstest-3544-default-rtdb {"name":"projects/549714994349/locations/us-central1/instances/roboticstest-3544-default-rtdb","project":"projects/549714994349","databaseUrl":"https://roboticstest-3544-default-rtdb.firebaseio.com","type":"DEFAULT_DATABASE","state":"ACTIVE"}
+[info] 
+[info] Firebase Realtime Database Security Rules allow you to define how your data should be
+[info] structured and when your data can be read from and written to.
+[info] 
+[debug] [2023-12-04T20:49:46.124Z] >>> [apiv2][query] GET https://roboticstest-3544-default-rtdb.firebaseio.com/.settings/rules.json [none]
+[debug] [2023-12-04T20:49:46.280Z] <<< [apiv2][status] GET https://roboticstest-3544-default-rtdb.firebaseio.com/.settings/rules.json 200
+[debug] [2023-12-04T20:49:46.281Z] <<< [apiv2][body] GET https://roboticstest-3544-default-rtdb.firebaseio.com/.settings/rules.json [stream]
+[info] +  Database Rules for roboticstest-3544-default-rtdb have been written to y. 
+[info] Future modifications to y will update Realtime Database Security Rules when you run
+[info] firebase deploy.
+[info] 
+=== Firestore Setup
+[debug] [2023-12-04T20:49:46.285Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/roboticstest-3544/services/firestore.googleapis.com [none]
+[debug] [2023-12-04T20:49:46.285Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/roboticstest-3544/services/firestore.googleapis.com x-goog-quota-user=projects/roboticstest-3544
+[debug] [2023-12-04T20:49:46.782Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/roboticstest-3544/services/firestore.googleapis.com 200
+[debug] [2023-12-04T20:49:46.782Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/roboticstest-3544/services/firestore.googleapis.com [omitted]
+[debug] [2023-12-04T20:49:46.782Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/roboticstest-3544/databases/(default) [none]
+[debug] [2023-12-04T20:49:46.905Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/roboticstest-3544/databases/(default) 200
+[debug] [2023-12-04T20:49:46.905Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/roboticstest-3544/databases/(default) {"name":"projects/roboticstest-3544/databases/(default)","uid":"fe16a637-136d-4c2a-9dfc-5e4c2f3cfcd7","createTime":"2023-12-04T20:42:14.699971Z","updateTime":"2023-12-04T20:42:14.699971Z","locationId":"northamerica-northeast1","type":"FIRESTORE_NATIVE","concurrencyMode":"PESSIMISTIC","versionRetentionPeriod":"3600s","earliestVersionTime":"2023-12-04T20:42:14.699971Z","appEngineIntegrationMode":"DISABLED","keyPrefix":"k","pointInTimeRecoveryEnablement":"POINT_IN_TIME_RECOVERY_DISABLED","deleteProtectionState":"DELETE_PROTECTION_DISABLED","etag":"IIOElpDU9oIDMPOMr83S9oID"}
+[debug] [2023-12-04T20:49:46.905Z] database_type: FIRESTORE_NATIVE
+[debug] [2023-12-04T20:49:46.906Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-12-04T20:49:46.906Z] > authorizing via signed-in user (ly451462@gmail.com)
+[debug] [2023-12-04T20:49:46.906Z] [iam] checking project roboticstest-3544 for permissions ["firebase.projects.get"]
+[debug] [2023-12-04T20:49:46.906Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/roboticstest-3544:testIamPermissions [none]
+[debug] [2023-12-04T20:49:46.906Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/roboticstest-3544:testIamPermissions x-goog-quota-user=projects/roboticstest-3544
+[debug] [2023-12-04T20:49:46.906Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/roboticstest-3544:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2023-12-04T20:49:47.182Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/roboticstest-3544:testIamPermissions 200
+[debug] [2023-12-04T20:49:47.182Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/roboticstest-3544:testIamPermissions {"permissions":["firebase.projects.get"]}
+[info] 
+[info] Firestore Security Rules allow you to define how and when to allow
+[info] requests. You can keep these rules in your project directory
+[info] and publish them with firebase deploy.
+[info] 
+[debug] [2023-12-04T20:49:49.712Z] >>> [apiv2][query] GET https://firebaserules.googleapis.com/v1/projects/roboticstest-3544/releases pageSize=10&pageToken=
+[debug] [2023-12-04T20:49:49.918Z] <<< [apiv2][status] GET https://firebaserules.googleapis.com/v1/projects/roboticstest-3544/releases 200
+[debug] [2023-12-04T20:49:49.918Z] <<< [apiv2][body] GET https://firebaserules.googleapis.com/v1/projects/roboticstest-3544/releases {"releases":[{"name":"projects/roboticstest-3544/releases/cloud.firestore","rulesetName":"projects/roboticstest-3544/rulesets/7e0457f7-8eed-4ff3-b271-4f388615bfd7","createTime":"2023-12-04T20:42:19.209400Z","updateTime":"2023-12-04T20:42:19.209400Z"},{"name":"projects/roboticstest-3544/releases/firebase.storage/roboticstest-3544.appspot.com","rulesetName":"projects/roboticstest-3544/rulesets/092bcf12-a3f4-4dc0-9bfc-436835514667","createTime":"2023-12-04T20:48:56.893470Z","updateTime":"2023-12-04T20:48:56.893470Z"}]}
+[debug] [2023-12-04T20:49:49.927Z] Found ruleset: projects/roboticstest-3544/rulesets/7e0457f7-8eed-4ff3-b271-4f388615bfd7
+[debug] [2023-12-04T20:49:49.927Z] >>> [apiv2][query] GET https://firebaserules.googleapis.com/v1/projects/roboticstest-3544/rulesets/7e0457f7-8eed-4ff3-b271-4f388615bfd7 [none]
+[debug] [2023-12-04T20:49:50.111Z] <<< [apiv2][status] GET https://firebaserules.googleapis.com/v1/projects/roboticstest-3544/rulesets/7e0457f7-8eed-4ff3-b271-4f388615bfd7 200
+[debug] [2023-12-04T20:49:50.111Z] <<< [apiv2][body] GET https://firebaserules.googleapis.com/v1/projects/roboticstest-3544/rulesets/7e0457f7-8eed-4ff3-b271-4f388615bfd7 [omitted]
+[info] 
+[info] Firestore indexes allow you to perform complex queries while
+[info] maintaining performance that scales with the size of the result
+[info] set. You can keep index definitions in your project directory
+[info] and publish them with firebase deploy.
+[info] 
+[debug] [2023-12-04T20:49:53.801Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/roboticstest-3544/databases/(default)/collectionGroups/-/indexes [none]
+[debug] [2023-12-04T20:49:53.803Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/roboticstest-3544/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false OR ttlConfig:* [none]
+[debug] [2023-12-04T20:49:53.938Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/roboticstest-3544/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false OR ttlConfig:* 200
+[debug] [2023-12-04T20:49:53.938Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/roboticstest-3544/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false OR ttlConfig:* {"fields":[{"name":"projects/roboticstest-3544/databases/(default)/collectionGroups/__default__/fields/*","indexConfig":{"indexes":[{"queryScope":"COLLECTION","fields":[{"fieldPath":"*","order":"ASCENDING"}],"state":"READY"},{"queryScope":"COLLECTION","fields":[{"fieldPath":"*","order":"DESCENDING"}],"state":"READY"},{"queryScope":"COLLECTION","fields":[{"fieldPath":"*","arrayConfig":"CONTAINS"}],"state":"READY"}]}}]}
+[debug] [2023-12-04T20:49:54.402Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/roboticstest-3544/databases/(default)/collectionGroups/-/indexes 200
+[debug] [2023-12-04T20:49:54.402Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/roboticstest-3544/databases/(default)/collectionGroups/-/indexes {}
+[info] 
+=== Hosting Setup
+[debug] [2023-12-04T20:49:54.404Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/roboticstest-3544 [none]
+[debug] [2023-12-04T20:49:54.662Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/roboticstest-3544 200
+[debug] [2023-12-04T20:49:54.662Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/roboticstest-3544 {"projectId":"roboticstest-3544","projectNumber":"549714994349","displayName":"roboticsTest","name":"projects/roboticstest-3544","resources":{"hostingSite":"roboticstest-3544","realtimeDatabaseInstance":"roboticstest-3544-default-rtdb","locationId":"northamerica-northeast1"},"state":"ACTIVE","etag":"1_33af7049-cfe5-409f-a88c-5675f40fb158"}
+[info] 
+[info] i  Detected a .git folder at C:\Users\Nicky Ly\Documents\GitHub\Website 
+[info] i  Authorizing with GitHub to upload your service account to a GitHub repository's secrets store. 
+[info] 
+[info] Visit this URL on this device to log in:
+[info] https://github.com/login/oauth/authorize?client_id=89cf50f02ac6aaed3484&state=1066057068&redirect_uri=http%3A%2F%2Flocalhost%3A9005&scope=read%3Auser%20repo%20public_repo
+[info] 
+[info] Waiting for authentication...
+[debug] [2023-12-04T20:50:14.089Z] >>> [apiv2][query] POST https://github.com/login/oauth/access_token [none]
+[debug] [2023-12-04T20:50:14.089Z] >>> [apiv2][body] POST https://github.com/login/oauth/access_token [stream]
+[debug] [2023-12-04T20:50:14.348Z] <<< [apiv2][status] POST https://github.com/login/oauth/access_token 200
+[debug] [2023-12-04T20:50:14.348Z] <<< [apiv2][body] POST https://github.com/login/oauth/access_token {"access_token":"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","token_type":"bearer","scope":"read:user,repo"}
+[debug] [2023-12-04T20:50:14.352Z] >>> [apiv2][query] GET https://api.github.com/user [none]
+[debug] [2023-12-04T20:50:14.584Z] <<< [apiv2][status] GET https://api.github.com/user 200
+[debug] [2023-12-04T20:50:14.584Z] <<< [apiv2][body] GET https://api.github.com/user {"login":"weebified","id":77171064,"node_id":"MDQ6VXNlcjc3MTcxMDY0","avatar_url":"https://avatars.githubusercontent.com/u/77171064?v=4","gravatar_id":"","url":"https://api.github.com/users/weebified","html_url":"https://github.com/weebified","followers_url":"https://api.github.com/users/weebified/followers","following_url":"https://api.github.com/users/weebified/following{/other_user}","gists_url":"https://api.github.com/users/weebified/gists{/gist_id}","starred_url":"https://api.github.com/users/weebified/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/weebified/subscriptions","organizations_url":"https://api.github.com/users/weebified/orgs","repos_url":"https://api.github.com/users/weebified/repos","events_url":"https://api.github.com/users/weebified/events{/privacy}","received_events_url":"https://api.github.com/users/weebified/received_events","type":"User","site_admin":false,"name":"weebified","company":null,"blog":"weebified.github.io","location":null,"email":null,"hireable":null,"bio":null,"twitter_username":"weeblfied","public_repos":2,"public_gists":0,"followers":1,"following":2,"created_at":"2021-01-08T19:29:51Z","updated_at":"2023-03-19T15:22:25Z","private_gists":0,"total_private_repos":2,"owned_private_repos":2,"disk_usage":192878,"collaborators":0,"two_factor_authentication":true,"plan":{"name":"free","space":976562499,"collaborators":0,"private_repos":10000}}
+[info] 
+[info] +  Success! Logged into GitHub as weebified 
+[info] 
+[debug] [2023-12-04T20:50:32.234Z] >>> [apiv2][query] GET https://api.github.com/repos//actions/secrets/public-key type=owner
+[debug] [2023-12-04T20:50:32.403Z] <<< [apiv2][status] GET https://api.github.com/repos//actions/secrets/public-key 404
+[debug] [2023-12-04T20:50:32.403Z] <<< [apiv2][body] GET https://api.github.com/repos//actions/secrets/public-key {"message":"Not Found","documentation_url":"https://docs.github.com/rest"}
+[info] 
+[info] 
+[error] !  The provided authorization cannot be used with this repository. If this repository is in an organization, did you remember to grant access? 
+[info] 
+[info] i  Action required: Visit this URL to ensure access has been granted to the appropriate organization(s) for the Firebase CLI GitHub OAuth App: 
+[info] https://github.com/settings/connections/applications/89cf50f02ac6aaed3484
+[info] 
+[debug] [2023-12-04T20:51:27.754Z] >>> [apiv2][query] GET https://api.github.com/repos//actions/secrets/public-key type=owner
+[debug] [2023-12-04T20:51:27.933Z] <<< [apiv2][status] GET https://api.github.com/repos//actions/secrets/public-key 401
+[debug] [2023-12-04T20:51:27.934Z] <<< [apiv2][body] GET https://api.github.com/repos//actions/secrets/public-key {"message":"Bad credentials","documentation_url":"https://docs.github.com/rest"}
+[debug] [2023-12-04T20:52:27.898Z] ----------------------------------------------------------------------
+[debug] [2023-12-04T20:52:27.900Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Nicky Ly\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2023-12-04T20:52:27.900Z] CLI Version:   12.9.1
+[debug] [2023-12-04T20:52:27.900Z] Platform:      win32
+[debug] [2023-12-04T20:52:27.901Z] Node Version:  v18.5.0
+[debug] [2023-12-04T20:52:27.902Z] Time:          Mon Dec 04 2023 15:52:27 GMT-0500 (Eastern Standard Time)
+[debug] [2023-12-04T20:52:27.902Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-12-04T20:52:27.907Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-12-04T20:52:27.908Z] > authorizing via signed-in user (ly451462@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\Nicky Ly\Documents\GitHub\Website
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2023-12-04T20:52:43.569Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=100
+[debug] [2023-12-04T20:52:44.088Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2023-12-04T20:52:44.088Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[info] i  Using project roboticstest-3544 (roboticsTest) 
+[info] 
+=== Database Setup
+[info] i  database: ensuring required API firebasedatabase.googleapis.com is enabled... 
+[debug] [2023-12-04T20:52:44.767Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/roboticstest-3544/services/firebasedatabase.googleapis.com [none]
+[debug] [2023-12-04T20:52:44.768Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/roboticstest-3544/services/firebasedatabase.googleapis.com x-goog-quota-user=projects/roboticstest-3544
+[debug] [2023-12-04T20:52:45.234Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/roboticstest-3544/services/firebasedatabase.googleapis.com 200
+[debug] [2023-12-04T20:52:45.235Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/roboticstest-3544/services/firebasedatabase.googleapis.com [omitted]
+[info] +  database: required API firebasedatabase.googleapis.com is enabled 
+[info] 
+[debug] [2023-12-04T20:52:45.237Z] >>> [apiv2][query] GET https://firebasedatabase.googleapis.com/v1beta/projects/roboticstest-3544/locations/-/instances/roboticstest-3544-default-rtdb [none]
+[debug] [2023-12-04T20:52:45.575Z] <<< [apiv2][status] GET https://firebasedatabase.googleapis.com/v1beta/projects/roboticstest-3544/locations/-/instances/roboticstest-3544-default-rtdb 200
+[debug] [2023-12-04T20:52:45.575Z] <<< [apiv2][body] GET https://firebasedatabase.googleapis.com/v1beta/projects/roboticstest-3544/locations/-/instances/roboticstest-3544-default-rtdb {"name":"projects/549714994349/locations/us-central1/instances/roboticstest-3544-default-rtdb","project":"projects/549714994349","databaseUrl":"https://roboticstest-3544-default-rtdb.firebaseio.com","type":"DEFAULT_DATABASE","state":"ACTIVE"}
+[info] 
+[info] Firebase Realtime Database Security Rules allow you to define how your data should be
+[info] structured and when your data can be read from and written to.
+[info] 
+[debug] [2023-12-04T20:52:47.330Z] >>> [apiv2][query] GET https://roboticstest-3544-default-rtdb.firebaseio.com/.settings/rules.json [none]
+[debug] [2023-12-04T20:52:47.516Z] <<< [apiv2][status] GET https://roboticstest-3544-default-rtdb.firebaseio.com/.settings/rules.json 200
+[debug] [2023-12-04T20:52:47.516Z] <<< [apiv2][body] GET https://roboticstest-3544-default-rtdb.firebaseio.com/.settings/rules.json [stream]
+[info] +  Database Rules for roboticstest-3544-default-rtdb have been written to database.rules.json. 
+[info] Future modifications to database.rules.json will update Realtime Database Security Rules when you run
+[info] firebase deploy.
+[info] 
+=== Firestore Setup
+[debug] [2023-12-04T20:52:47.521Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/roboticstest-3544/services/firestore.googleapis.com [none]
+[debug] [2023-12-04T20:52:47.522Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/roboticstest-3544/services/firestore.googleapis.com x-goog-quota-user=projects/roboticstest-3544
+[debug] [2023-12-04T20:52:47.997Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/roboticstest-3544/services/firestore.googleapis.com 200
+[debug] [2023-12-04T20:52:47.997Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/roboticstest-3544/services/firestore.googleapis.com [omitted]
+[debug] [2023-12-04T20:52:47.998Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/roboticstest-3544/databases/(default) [none]
+[debug] [2023-12-04T20:52:48.147Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/roboticstest-3544/databases/(default) 200
+[debug] [2023-12-04T20:52:48.147Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/roboticstest-3544/databases/(default) {"name":"projects/roboticstest-3544/databases/(default)","uid":"fe16a637-136d-4c2a-9dfc-5e4c2f3cfcd7","createTime":"2023-12-04T20:42:14.699971Z","updateTime":"2023-12-04T20:42:14.699971Z","locationId":"northamerica-northeast1","type":"FIRESTORE_NATIVE","concurrencyMode":"PESSIMISTIC","versionRetentionPeriod":"3600s","earliestVersionTime":"2023-12-04T20:42:14.699971Z","appEngineIntegrationMode":"DISABLED","keyPrefix":"k","pointInTimeRecoveryEnablement":"POINT_IN_TIME_RECOVERY_DISABLED","deleteProtectionState":"DELETE_PROTECTION_DISABLED","etag":"IPfry+bU9oIDMPOMr83S9oID"}
+[debug] [2023-12-04T20:52:48.148Z] database_type: FIRESTORE_NATIVE
+[debug] [2023-12-04T20:52:48.148Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-12-04T20:52:48.148Z] > authorizing via signed-in user (ly451462@gmail.com)
+[debug] [2023-12-04T20:52:48.148Z] [iam] checking project roboticstest-3544 for permissions ["firebase.projects.get"]
+[debug] [2023-12-04T20:52:48.149Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/roboticstest-3544:testIamPermissions [none]
+[debug] [2023-12-04T20:52:48.149Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/roboticstest-3544:testIamPermissions x-goog-quota-user=projects/roboticstest-3544
+[debug] [2023-12-04T20:52:48.149Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/roboticstest-3544:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2023-12-04T20:52:48.301Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/roboticstest-3544:testIamPermissions 200
+[debug] [2023-12-04T20:52:48.301Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/roboticstest-3544:testIamPermissions {"permissions":["firebase.projects.get"]}
+[info] 
+[info] Firestore Security Rules allow you to define how and when to allow
+[info] requests. You can keep these rules in your project directory
+[info] and publish them with firebase deploy.
+[info] 
+[debug] [2023-12-04T20:52:49.965Z] >>> [apiv2][query] GET https://firebaserules.googleapis.com/v1/projects/roboticstest-3544/releases pageSize=10&pageToken=
+[debug] [2023-12-04T20:52:50.202Z] <<< [apiv2][status] GET https://firebaserules.googleapis.com/v1/projects/roboticstest-3544/releases 200
+[debug] [2023-12-04T20:52:50.202Z] <<< [apiv2][body] GET https://firebaserules.googleapis.com/v1/projects/roboticstest-3544/releases {"releases":[{"name":"projects/roboticstest-3544/releases/cloud.firestore","rulesetName":"projects/roboticstest-3544/rulesets/7e0457f7-8eed-4ff3-b271-4f388615bfd7","createTime":"2023-12-04T20:42:19.209400Z","updateTime":"2023-12-04T20:42:19.209400Z"},{"name":"projects/roboticstest-3544/releases/firebase.storage/roboticstest-3544.appspot.com","rulesetName":"projects/roboticstest-3544/rulesets/092bcf12-a3f4-4dc0-9bfc-436835514667","createTime":"2023-12-04T20:48:56.893470Z","updateTime":"2023-12-04T20:48:56.893470Z"}]}
+[debug] [2023-12-04T20:52:50.210Z] Found ruleset: projects/roboticstest-3544/rulesets/7e0457f7-8eed-4ff3-b271-4f388615bfd7
+[debug] [2023-12-04T20:52:50.210Z] >>> [apiv2][query] GET https://firebaserules.googleapis.com/v1/projects/roboticstest-3544/rulesets/7e0457f7-8eed-4ff3-b271-4f388615bfd7 [none]
+[debug] [2023-12-04T20:52:50.439Z] <<< [apiv2][status] GET https://firebaserules.googleapis.com/v1/projects/roboticstest-3544/rulesets/7e0457f7-8eed-4ff3-b271-4f388615bfd7 200
+[debug] [2023-12-04T20:52:50.439Z] <<< [apiv2][body] GET https://firebaserules.googleapis.com/v1/projects/roboticstest-3544/rulesets/7e0457f7-8eed-4ff3-b271-4f388615bfd7 [omitted]
+[info] 
+[info] Firestore indexes allow you to perform complex queries while
+[info] maintaining performance that scales with the size of the result
+[info] set. You can keep index definitions in your project directory
+[info] and publish them with firebase deploy.
+[info] 
+[debug] [2023-12-04T20:52:51.975Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/roboticstest-3544/databases/(default)/collectionGroups/-/indexes [none]
+[debug] [2023-12-04T20:52:51.977Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/roboticstest-3544/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false OR ttlConfig:* [none]
+[debug] [2023-12-04T20:52:52.079Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/roboticstest-3544/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false OR ttlConfig:* 200
+[debug] [2023-12-04T20:52:52.079Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/roboticstest-3544/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false OR ttlConfig:* {"fields":[{"name":"projects/roboticstest-3544/databases/(default)/collectionGroups/__default__/fields/*","indexConfig":{"indexes":[{"queryScope":"COLLECTION","fields":[{"fieldPath":"*","order":"ASCENDING"}],"state":"READY"},{"queryScope":"COLLECTION","fields":[{"fieldPath":"*","order":"DESCENDING"}],"state":"READY"},{"queryScope":"COLLECTION","fields":[{"fieldPath":"*","arrayConfig":"CONTAINS"}],"state":"READY"}]}}]}
+[debug] [2023-12-04T20:52:52.092Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/roboticstest-3544/databases/(default)/collectionGroups/-/indexes 200
+[debug] [2023-12-04T20:52:52.092Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/roboticstest-3544/databases/(default)/collectionGroups/-/indexes {}
+[info] 
+=== Hosting Setup
+[debug] [2023-12-04T20:52:52.097Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/roboticstest-3544 [none]
+[debug] [2023-12-04T20:52:52.470Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/roboticstest-3544 200
+[debug] [2023-12-04T20:52:52.470Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/roboticstest-3544 {"projectId":"roboticstest-3544","projectNumber":"549714994349","displayName":"roboticsTest","name":"projects/roboticstest-3544","resources":{"hostingSite":"roboticstest-3544","realtimeDatabaseInstance":"roboticstest-3544-default-rtdb","locationId":"northamerica-northeast1"},"state":"ACTIVE","etag":"1_33af7049-cfe5-409f-a88c-5675f40fb158"}
+[info] 
+[info] i  Detected a .git folder at C:\Users\Nicky Ly\Documents\GitHub\Website 
+[info] i  Authorizing with GitHub to upload your service account to a GitHub repository's secrets store. 
+[info] 
+[info] Visit this URL on this device to log in:
+[info] https://github.com/login/oauth/authorize?client_id=89cf50f02ac6aaed3484&state=59167590&redirect_uri=http%3A%2F%2Flocalhost%3A9005&scope=read%3Auser%20repo%20public_repo
+[info] 
+[info] Waiting for authentication...
+[debug] [2023-12-04T20:53:08.853Z] >>> [apiv2][query] POST https://github.com/login/oauth/access_token [none]
+[debug] [2023-12-04T20:53:08.854Z] >>> [apiv2][body] POST https://github.com/login/oauth/access_token [stream]
+[debug] [2023-12-04T20:53:09.138Z] <<< [apiv2][status] POST https://github.com/login/oauth/access_token 200
+[debug] [2023-12-04T20:53:09.138Z] <<< [apiv2][body] POST https://github.com/login/oauth/access_token {"access_token":"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","token_type":"bearer","scope":"read:user,repo"}
+[debug] [2023-12-04T20:53:09.144Z] >>> [apiv2][query] GET https://api.github.com/user [none]
+[debug] [2023-12-04T20:53:09.397Z] <<< [apiv2][status] GET https://api.github.com/user 200
+[debug] [2023-12-04T20:53:09.397Z] <<< [apiv2][body] GET https://api.github.com/user {"login":"weebified","id":77171064,"node_id":"MDQ6VXNlcjc3MTcxMDY0","avatar_url":"https://avatars.githubusercontent.com/u/77171064?v=4","gravatar_id":"","url":"https://api.github.com/users/weebified","html_url":"https://github.com/weebified","followers_url":"https://api.github.com/users/weebified/followers","following_url":"https://api.github.com/users/weebified/following{/other_user}","gists_url":"https://api.github.com/users/weebified/gists{/gist_id}","starred_url":"https://api.github.com/users/weebified/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/weebified/subscriptions","organizations_url":"https://api.github.com/users/weebified/orgs","repos_url":"https://api.github.com/users/weebified/repos","events_url":"https://api.github.com/users/weebified/events{/privacy}","received_events_url":"https://api.github.com/users/weebified/received_events","type":"User","site_admin":false,"name":"weebified","company":null,"blog":"weebified.github.io","location":null,"email":null,"hireable":null,"bio":null,"twitter_username":"weeblfied","public_repos":2,"public_gists":0,"followers":1,"following":2,"created_at":"2021-01-08T19:29:51Z","updated_at":"2023-03-19T15:22:25Z","private_gists":0,"total_private_repos":2,"owned_private_repos":2,"disk_usage":192878,"collaborators":0,"two_factor_authentication":true,"plan":{"name":"free","space":976562499,"collaborators":0,"private_repos":10000}}
+[info] 
+[info] +  Success! Logged into GitHub as weebified 
+[info] 
+[debug] [2023-12-04T20:54:16.379Z] >>> [apiv2][query] GET https://api.github.com/repos/Spartiates-3544/Website/actions/secrets/public-key type=owner
+[debug] [2023-12-04T20:54:16.624Z] <<< [apiv2][status] GET https://api.github.com/repos/Spartiates-3544/Website/actions/secrets/public-key 200
+[debug] [2023-12-04T20:54:16.624Z] <<< [apiv2][body] GET https://api.github.com/repos/Spartiates-3544/Website/actions/secrets/public-key {"key_id":"568250167242549743","key":"E+f0FD0S5OwMy3aprCdkpKsUBJeJZVVhCH1OMT20YQw="}
+[debug] [2023-12-04T20:54:16.626Z] >>> [apiv2][query] GET https://api.github.com/repos/Spartiates-3544/Website [none]
+[debug] [2023-12-04T20:54:16.926Z] <<< [apiv2][status] GET https://api.github.com/repos/Spartiates-3544/Website 200
+[debug] [2023-12-04T20:54:16.926Z] <<< [apiv2][body] GET https://api.github.com/repos/Spartiates-3544/Website {"id":684857858,"node_id":"R_kgDOKNIaAg","name":"Website","full_name":"Spartiates-3544/Website","private":false,"owner":{"login":"Spartiates-3544","id":97471123,"node_id":"O_kgDOBc9Kkw","avatar_url":"https://avatars.githubusercontent.com/u/97471123?v=4","gravatar_id":"","url":"https://api.github.com/users/Spartiates-3544","html_url":"https://github.com/Spartiates-3544","followers_url":"https://api.github.com/users/Spartiates-3544/followers","following_url":"https://api.github.com/users/Spartiates-3544/following{/other_user}","gists_url":"https://api.github.com/users/Spartiates-3544/gists{/gist_id}","starred_url":"https://api.github.com/users/Spartiates-3544/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/Spartiates-3544/subscriptions","organizations_url":"https://api.github.com/users/Spartiates-3544/orgs","repos_url":"https://api.github.com/users/Spartiates-3544/repos","events_url":"https://api.github.com/users/Spartiates-3544/events{/privacy}","received_events_url":"https://api.github.com/users/Spartiates-3544/received_events","type":"Organization","site_admin":false},"html_url":"https://github.com/Spartiates-3544/Website","description":"A website for the Spartiates robotics team","fork":false,"url":"https://api.github.com/repos/Spartiates-3544/Website","forks_url":"https://api.github.com/repos/Spartiates-3544/Website/forks","keys_url":"https://api.github.com/repos/Spartiates-3544/Website/keys{/key_id}","collaborators_url":"https://api.github.com/repos/Spartiates-3544/Website/collaborators{/collaborator}","teams_url":"https://api.github.com/repos/Spartiates-3544/Website/teams","hooks_url":"https://api.github.com/repos/Spartiates-3544/Website/hooks","issue_events_url":"https://api.github.com/repos/Spartiates-3544/Website/issues/events{/number}","events_url":"https://api.github.com/repos/Spartiates-3544/Website/events","assignees_url":"https://api.github.com/repos/Spartiates-3544/Website/assignees{/user}","branches_url":"https://api.github.com/repos/Spartiates-3544/Website/branches{/branch}","tags_url":"https://api.github.com/repos/Spartiates-3544/Website/tags","blobs_url":"https://api.github.com/repos/Spartiates-3544/Website/git/blobs{/sha}","git_tags_url":"https://api.github.com/repos/Spartiates-3544/Website/git/tags{/sha}","git_refs_url":"https://api.github.com/repos/Spartiates-3544/Website/git/refs{/sha}","trees_url":"https://api.github.com/repos/Spartiates-3544/Website/git/trees{/sha}","statuses_url":"https://api.github.com/repos/Spartiates-3544/Website/statuses/{sha}","languages_url":"https://api.github.com/repos/Spartiates-3544/Website/languages","stargazers_url":"https://api.github.com/repos/Spartiates-3544/Website/stargazers","contributors_url":"https://api.github.com/repos/Spartiates-3544/Website/contributors","subscribers_url":"https://api.github.com/repos/Spartiates-3544/Website/subscribers","subscription_url":"https://api.github.com/repos/Spartiates-3544/Website/subscription","commits_url":"https://api.github.com/repos/Spartiates-3544/Website/commits{/sha}","git_commits_url":"https://api.github.com/repos/Spartiates-3544/Website/git/commits{/sha}","comments_url":"https://api.github.com/repos/Spartiates-3544/Website/comments{/number}","issue_comment_url":"https://api.github.com/repos/Spartiates-3544/Website/issues/comments{/number}","contents_url":"https://api.github.com/repos/Spartiates-3544/Website/contents/{+path}","compare_url":"https://api.github.com/repos/Spartiates-3544/Website/compare/{base}...{head}","merges_url":"https://api.github.com/repos/Spartiates-3544/Website/merges","archive_url":"https://api.github.com/repos/Spartiates-3544/Website/{archive_format}{/ref}","downloads_url":"https://api.github.com/repos/Spartiates-3544/Website/downloads","issues_url":"https://api.github.com/repos/Spartiates-3544/Website/issues{/number}","pulls_url":"https://api.github.com/repos/Spartiates-3544/Website/pulls{/number}","milestones_url":"https://api.github.com/repos/Spartiates-3544/Website/milestones{/number}","notifications_url":"https://api.github.com/repos/Spartiates-3544/Website/notifications{?since,all,participating}","labels_url":"https://api.github.com/repos/Spartiates-3544/Website/labels{/name}","releases_url":"https://api.github.com/repos/Spartiates-3544/Website/releases{/id}","deployments_url":"https://api.github.com/repos/Spartiates-3544/Website/deployments","created_at":"2023-08-30T02:00:18Z","updated_at":"2023-09-05T01:10:57Z","pushed_at":"2023-12-04T01:56:23Z","git_url":"git://github.com/Spartiates-3544/Website.git","ssh_url":"git@github.com:Spartiates-3544/Website.git","clone_url":"https://github.com/Spartiates-3544/Website.git","svn_url":"https://github.com/Spartiates-3544/Website","homepage":"","size":139,"stargazers_count":0,"watchers_count":0,"language":"Svelte","has_issues":true,"has_projects":true,"has_downloads":true,"has_wiki":true,"has_pages":false,"has_discussions":false,"forks_count":0,"mirror_url":null,"archived":false,"disabled":false,"open_issues_count":0,"license":{"key":"agpl-3.0","name":"GNU Affero General Public License v3.0","spdx_id":"AGPL-3.0","url":"https://api.github.com/licenses/agpl-3.0","node_id":"MDc6TGljZW5zZTE="},"allow_forking":true,"is_template":false,"web_commit_signoff_required":false,"topics":[],"visibility":"public","forks":0,"open_issues":0,"watchers":0,"default_branch":"main","permissions":{"admin":true,"maintain":true,"push":true,"triage":true,"pull":true},"temp_clone_token":"","allow_squash_merge":true,"allow_merge_commit":true,"allow_rebase_merge":true,"allow_auto_merge":false,"delete_branch_on_merge":false,"allow_update_branch":false,"use_squash_pr_title_as_default":false,"squash_merge_commit_message":"COMMIT_MESSAGES","squash_merge_commit_title":"COMMIT_OR_PR_TITLE","merge_commit_message":"PR_TITLE","merge_commit_title":"MERGE_MESSAGE","organization":{"login":"Spartiates-3544","id":97471123,"node_id":"O_kgDOBc9Kkw","avatar_url":"https://avatars.githubusercontent.com/u/97471123?v=4","gravatar_id":"","url":"https://api.github.com/users/Spartiates-3544","html_url":"https://github.com/Spartiates-3544","followers_url":"https://api.github.com/users/Spartiates-3544/followers","following_url":"https://api.github.com/users/Spartiates-3544/following{/other_user}","gists_url":"https://api.github.com/users/Spartiates-3544/gists{/gist_id}","starred_url":"https://api.github.com/users/Spartiates-3544/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/Spartiates-3544/subscriptions","organizations_url":"https://api.github.com/users/Spartiates-3544/orgs","repos_url":"https://api.github.com/users/Spartiates-3544/repos","events_url":"https://api.github.com/users/Spartiates-3544/events{/privacy}","received_events_url":"https://api.github.com/users/Spartiates-3544/received_events","type":"Organization","site_admin":false},"security_and_analysis":{"secret_scanning":{"status":"disabled"},"secret_scanning_push_protection":{"status":"disabled"},"dependabot_security_updates":{"status":"disabled"},"secret_scanning_validity_checks":{"status":"disabled"}},"network_count":0,"subscribers_count":0}
+[debug] [2023-12-04T20:54:16.927Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/roboticstest-3544/serviceAccounts [none]
+[debug] [2023-12-04T20:54:16.927Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/roboticstest-3544/serviceAccounts {"accountId":"github-action-684857858","serviceAccount":{"displayName":"GitHub Actions (Spartiates-3544/Website)","description":"A service account with permission to deploy to Firebase Hosting and Cloud Functions for the GitHub repository Spartiates-3544/Website"}}
+[debug] [2023-12-04T20:54:17.927Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/roboticstest-3544/serviceAccounts 200
+[debug] [2023-12-04T20:54:17.927Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/roboticstest-3544/serviceAccounts [omitted]
+[debug] [2023-12-04T20:54:17.928Z] >>> [apiv2][query] GET https://iam.googleapis.com/v1/projects/roboticstest-3544/serviceAccounts/github-action-684857858@roboticstest-3544.iam.gserviceaccount.com [none]
+[debug] [2023-12-04T20:54:17.929Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/roboticstest-3544:getIamPolicy [none]
+[debug] [2023-12-04T20:54:18.190Z] <<< [apiv2][status] GET https://iam.googleapis.com/v1/projects/roboticstest-3544/serviceAccounts/github-action-684857858@roboticstest-3544.iam.gserviceaccount.com 200
+[debug] [2023-12-04T20:54:18.191Z] <<< [apiv2][body] GET https://iam.googleapis.com/v1/projects/roboticstest-3544/serviceAccounts/github-action-684857858@roboticstest-3544.iam.gserviceaccount.com {"name":"projects/roboticstest-3544/serviceAccounts/github-action-684857858@roboticstest-3544.iam.gserviceaccount.com","projectId":"roboticstest-3544","uniqueId":"101850726282250256701","email":"github-action-684857858@roboticstest-3544.iam.gserviceaccount.com","displayName":"GitHub Actions (Spartiates-3544/Website)","etag":"MDEwMjE5MjA=","description":"A service account with permission to deploy to Firebase Hosting and Cloud Functions for the GitHub repository Spartiates-3544/Website","oauth2ClientId":"101850726282250256701"}
+[debug] [2023-12-04T20:54:18.254Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/roboticstest-3544:getIamPolicy 200
+[debug] [2023-12-04T20:54:18.254Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/roboticstest-3544:getIamPolicy {"version":1,"etag":"BwYLtT71KO4=","bindings":[{"role":"roles/cloudfunctions.serviceAgent","members":["serviceAccount:service-549714994349@gcf-admin-robot.iam.gserviceaccount.com"]},{"role":"roles/editor","members":["serviceAccount:roboticstest-3544@appspot.gserviceaccount.com"]},{"role":"roles/firebase.managementServiceAgent","members":["serviceAccount:firebase-service-account@firebase-sa-management.iam.gserviceaccount.com","serviceAccount:service-549714994349@gcp-sa-firebase.iam.gserviceaccount.com"]},{"role":"roles/firebase.sdkAdminServiceAgent","members":["serviceAccount:firebase-adminsdk-c4w1q@roboticstest-3544.iam.gserviceaccount.com"]},{"role":"roles/firebaserules.system","members":["serviceAccount:service-549714994349@firebase-rules.iam.gserviceaccount.com"]},{"role":"roles/firebasestorage.serviceAgent","members":["serviceAccount:service-549714994349@gcp-sa-firebasestorage.iam.gserviceaccount.com"]},{"role":"roles/firestore.serviceAgent","members":["serviceAccount:service-549714994349@gcp-sa-firestore.iam.gserviceaccount.com"]},{"role":"roles/iam.serviceAccountTokenCreator","members":["serviceAccount:firebase-adminsdk-c4w1q@roboticstest-3544.iam.gserviceaccount.com"]},{"role":"roles/owner","members":["user:ly451462@gmail.com"]},{"role":"roles/pubsub.serviceAgent","members":["serviceAccount:service-549714994349@gcp-sa-pubsub.iam.gserviceaccount.com"]},{"role":"roles/storage.admin","members":["serviceAccount:firebase-adminsdk-c4w1q@roboticstest-3544.iam.gserviceaccount.com"]}]}
+[debug] [2023-12-04T20:54:18.254Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/roboticstest-3544:setIamPolicy [none]
+[debug] [2023-12-04T20:54:18.254Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/roboticstest-3544:setIamPolicy {"policy":{"version":1,"etag":"BwYLtT71KO4=","bindings":[{"role":"roles/cloudfunctions.serviceAgent","members":["serviceAccount:service-549714994349@gcf-admin-robot.iam.gserviceaccount.com"]},{"role":"roles/editor","members":["serviceAccount:roboticstest-3544@appspot.gserviceaccount.com"]},{"role":"roles/firebase.managementServiceAgent","members":["serviceAccount:firebase-service-account@firebase-sa-management.iam.gserviceaccount.com","serviceAccount:service-549714994349@gcp-sa-firebase.iam.gserviceaccount.com"]},{"role":"roles/firebase.sdkAdminServiceAgent","members":["serviceAccount:firebase-adminsdk-c4w1q@roboticstest-3544.iam.gserviceaccount.com"]},{"role":"roles/firebaserules.system","members":["serviceAccount:service-549714994349@firebase-rules.iam.gserviceaccount.com"]},{"role":"roles/firebasestorage.serviceAgent","members":["serviceAccount:service-549714994349@gcp-sa-firebasestorage.iam.gserviceaccount.com"]},{"role":"roles/firestore.serviceAgent","members":["serviceAccount:service-549714994349@gcp-sa-firestore.iam.gserviceaccount.com"]},{"role":"roles/iam.serviceAccountTokenCreator","members":["serviceAccount:firebase-adminsdk-c4w1q@roboticstest-3544.iam.gserviceaccount.com"]},{"role":"roles/owner","members":["user:ly451462@gmail.com"]},{"role":"roles/pubsub.serviceAgent","members":["serviceAccount:service-549714994349@gcp-sa-pubsub.iam.gserviceaccount.com"]},{"role":"roles/storage.admin","members":["serviceAccount:firebase-adminsdk-c4w1q@roboticstest-3544.iam.gserviceaccount.com"]},{"role":"roles/firebaseauth.admin","members":["serviceAccount:github-action-684857858@roboticstest-3544.iam.gserviceaccount.com"]},{"role":"roles/serviceusage.apiKeysViewer","members":["serviceAccount:github-action-684857858@roboticstest-3544.iam.gserviceaccount.com"]},{"role":"roles/firebasehosting.admin","members":["serviceAccount:github-action-684857858@roboticstest-3544.iam.gserviceaccount.com"]},{"role":"roles/run.viewer","members":["serviceAccount:github-action-684857858@roboticstest-3544.iam.gserviceaccount.com"]},{"role":"roles/cloudfunctions.developer","members":["serviceAccount:github-action-684857858@roboticstest-3544.iam.gserviceaccount.com"]}]},"updateMask":"bindings"}
+[debug] [2023-12-04T20:54:18.973Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/roboticstest-3544:setIamPolicy 200
+[debug] [2023-12-04T20:54:18.973Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/roboticstest-3544:setIamPolicy {"version":1,"etag":"BwYLtVI8KoI=","bindings":[{"role":"roles/cloudfunctions.developer","members":["serviceAccount:github-action-684857858@roboticstest-3544.iam.gserviceaccount.com"]},{"role":"roles/cloudfunctions.serviceAgent","members":["serviceAccount:service-549714994349@gcf-admin-robot.iam.gserviceaccount.com"]},{"role":"roles/editor","members":["serviceAccount:roboticstest-3544@appspot.gserviceaccount.com"]},{"role":"roles/firebase.managementServiceAgent","members":["serviceAccount:firebase-service-account@firebase-sa-management.iam.gserviceaccount.com","serviceAccount:service-549714994349@gcp-sa-firebase.iam.gserviceaccount.com"]},{"role":"roles/firebase.sdkAdminServiceAgent","members":["serviceAccount:firebase-adminsdk-c4w1q@roboticstest-3544.iam.gserviceaccount.com"]},{"role":"roles/firebaseauth.admin","members":["serviceAccount:github-action-684857858@roboticstest-3544.iam.gserviceaccount.com"]},{"role":"roles/firebasehosting.admin","members":["serviceAccount:github-action-684857858@roboticstest-3544.iam.gserviceaccount.com"]},{"role":"roles/firebaserules.system","members":["serviceAccount:service-549714994349@firebase-rules.iam.gserviceaccount.com"]},{"role":"roles/firebasestorage.serviceAgent","members":["serviceAccount:service-549714994349@gcp-sa-firebasestorage.iam.gserviceaccount.com"]},{"role":"roles/firestore.serviceAgent","members":["serviceAccount:service-549714994349@gcp-sa-firestore.iam.gserviceaccount.com"]},{"role":"roles/iam.serviceAccountTokenCreator","members":["serviceAccount:firebase-adminsdk-c4w1q@roboticstest-3544.iam.gserviceaccount.com"]},{"role":"roles/owner","members":["user:ly451462@gmail.com"]},{"role":"roles/pubsub.serviceAgent","members":["serviceAccount:service-549714994349@gcp-sa-pubsub.iam.gserviceaccount.com"]},{"role":"roles/run.viewer","members":["serviceAccount:github-action-684857858@roboticstest-3544.iam.gserviceaccount.com"]},{"role":"roles/serviceusage.apiKeysViewer","members":["serviceAccount:github-action-684857858@roboticstest-3544.iam.gserviceaccount.com"]},{"role":"roles/storage.admin","members":["serviceAccount:firebase-adminsdk-c4w1q@roboticstest-3544.iam.gserviceaccount.com"]}]}
+[debug] [2023-12-04T20:54:18.973Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/roboticstest-3544/serviceAccounts/github-action-684857858@roboticstest-3544.iam.gserviceaccount.com/keys [none]
+[debug] [2023-12-04T20:54:18.973Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/roboticstest-3544/serviceAccounts/github-action-684857858@roboticstest-3544.iam.gserviceaccount.com/keys {"keyAlgorithm":"KEY_ALG_UNSPECIFIED","privateKeyType":"TYPE_GOOGLE_CREDENTIALS_FILE"}
+[debug] [2023-12-04T20:54:19.355Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/roboticstest-3544/serviceAccounts/github-action-684857858@roboticstest-3544.iam.gserviceaccount.com/keys 200
+[debug] [2023-12-04T20:54:19.355Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/roboticstest-3544/serviceAccounts/github-action-684857858@roboticstest-3544.iam.gserviceaccount.com/keys {"name":"projects/roboticstest-3544/serviceAccounts/github-action-684857858@roboticstest-3544.iam.gserviceaccount.com/keys/9f0497d1730d7a6e3e4310aae212a34b981400d6","privateKeyType":"TYPE_GOOGLE_CREDENTIALS_FILE","privateKeyData":"ewogICJ0eXBlIjogInNlcnZpY2VfYWNjb3VudCIsCiAgInByb2plY3RfaWQiOiAicm9ib3RpY3N0ZXN0LTM1NDQiLAogICJwcml2YXRlX2tleV9pZCI6ICI5ZjA0OTdkMTczMGQ3YTZlM2U0MzEwYWFlMjEyYTM0Yjk4MTQwMGQ2IiwKICAicHJpdmF0ZV9rZXkiOiAiLS0tLS1CRUdJTiBQUklWQVRFIEtFWS0tLS0tXG5NSUlFdkFJQkFEQU5CZ2txaGtpRzl3MEJBUUVGQUFTQ0JLWXdnZ1NpQWdFQUFvSUJBUUNjbzVNbmQvVVljZWRqXG5QVkdXNGM3MS9aM1dPaGZYZ0RtNEROMmVCMjNlM3UwY2c1N0V3V1BORUVHUVF2NWZTRHVyTFZMb2F0RkpFd1QwXG5tTGY1ZStYMHZWZmg3Z0NRSWR5VDM0aWNaWEI0ZFVaMVRwR0FCVE1uK3JPNjZmZ3BLNDE0aHVGemlhMUJ1Zk1xXG5pZzNaa1M4dHBDaHN2eEhtNFNvTjJaUVN4QlRENDRnZkgxcGxzSUt0U2RxUW5JUmlieGh6T0dOeFcvWEJCMXFkXG5jODZ5bWNZZWpWc0x1NEVzdHAxZGtmY3VYVFFLYzNCa2ZaclhQbUFYTEJaa2o2ZkZQR0dNVHZudlE2OVJtSEkwXG5oM1U4SVlvNGZBMEFNaDZDdm5GT1ZPLzBDRkJ4ak10MGhrYUtQOFBGQTlwYTFNc2U1VHNvbVpwd1JjNHpCWEdoXG52QVJmdTVsRkFnTUJBQUVDZ2Y4VmZ5bzdZcEJ6cUQ4N1RsRW9kT1lEWlA0elJpd2htbFZBZFpTZlBaajRwK1BBXG5mWUwzT1hFU2dFckRjSkJuVC9ueGN3S3BqWmpuQ0FxRDdXQ0Zka2hNQ2ZSOUhqM0NWdU5WSTYycy9EN3FyNVA3XG4ycnR5Z1AvcXIrTzJYTXdwWXRERFFrZ1UrWXZOaW5NN01CMkRSdUQvYzVrSGw5di9PZmljbUtZTy9sRjAxTkpxXG5abXV2ODVVSzZhUHZpRzV3SzJ6enYzaVlNU28vS2tZV3JRUUhQMHFQZ1lWT256aE04TE1JOWx4RThBeno5M3ZKXG5nRnFxc2hmOTVkUlRVVlV0WE8vN0hQS0k5VUZQaEZobVAxeW93MDJyNFhUSytSaE8vMThpekYyeGhTbXltc0ZqXG5qK3prYXNxamNKOXRTUHZxVEt0Y0RQUi9WeWhnZWRmdEVnMkV6aUVDZ1lFQXlvZENSakpZQ2kyV0VmTU9TUm9BXG5OaGVEbnVsSS9GY091Z2phZDlGV0xPbVNGMFF4R095dU5kNU4wUGh1ZFB4Q3J4Yy9BblhUNDliU1pNTUxVQUUvXG5COENiZDV3NStZT2M2dm1PYWRmcDBHUjFDNzl3VnpHM2c1QVQyQXV0RExvZW5zWHZuendlcWY1WGxIVnlaV2VYXG45REhRTzVkTmE3ODQzNW9IWXhDQmZNMENnWUVBeGY2dm8xbnNuQUMyRiszbTRhQlppQmJyZllzRHVYN2g0N1gvXG5qKzF2YXdDSitWeWFlOEtDVlRmaytNMi91WWx6Q2dSOU01S1o1SW8veXpVWEcxTVVVWFhXaFYvZkNOdE5Oek85XG5GejVqdDZLWVNvM0g4SDk0L0ZDd2tESU5JWlV0cW9zOTVaS09SZy9MWnUxWG9YYVNYbFlZTTRIT3NVTjJjUHV6XG4wQVYwRGxrQ2dZQlk3RkIrRDhhMkdWUGw1NmtqRWFaOEdaRHg2ZzNndGJ6Q2svYVFXenFTRjYvTVJXV2xRdTR1XG51ci9CL0FKTG5TTU9TNCtmM2VvK0JHbDJVbWthSktIdkhuTmtiaFRLYUM0eXdZWDFGUmNWSjdaNGhRS25WaTMwXG5Od052ZlpqcW1LR3ZKc3RTU0F4U3FWajgxeUIyUTZqbFVDWFV0RmNLOHZmZXZYdDIxSjEyRlFLQmdRQ1F5d001XG5DNDhjT3V6dnJQd1dib1JySUkvUXZMUFptSytyTGpLWjE4S09WdE9QOTZmRjcrWU9XaFRwMnRWbDR0MnRLc0ZBXG4wT29ZRnY0Mkpqb2lzbXYrY3BXUjdoMldSWUkvWjJmV01yc0wxUzFZQUQyQ1pFWmZCc2RJZkVIY0dGTlFFQW9RXG45RTkxYnlHSndQSS8wdzJSVFpiZlBBT2k0TG9pUUFBc2xZQmM2UUtCZ1FDdldjZktUVGc0bzZMb3MrMDg0RXlDXG50bEUreUlXMjMwUFc3SXhLeDdPQjNNNkl1UHZaWFBDQld2M1Bnb0grMHhDQ3EyaXZaOXhXV0hBM3FhT0lGalNyXG5SNEpSdktGL25UelhrM0dmb3NvRHZ0WUpVVXo1bDJIaWd6MkxiK1ZlaysrQkxaMEJ6ZGdnQTlrVnFhSXJLVGZ6XG5MY1c4ekE1bngvYmhwUGRIQWhPU1FRPT1cbi0tLS0tRU5EIFBSSVZBVEUgS0VZLS0tLS1cbiIsCiAgImNsaWVudF9lbWFpbCI6ICJnaXRodWItYWN0aW9uLTY4NDg1Nzg1OEByb2JvdGljc3Rlc3QtMzU0NC5pYW0uZ3NlcnZpY2VhY2NvdW50LmNvbSIsCiAgImNsaWVudF9pZCI6ICIxMDE4NTA3MjYyODIyNTAyNTY3MDEiLAogICJhdXRoX3VyaSI6ICJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20vby9vYXV0aDIvYXV0aCIsCiAgInRva2VuX3VyaSI6ICJodHRwczovL29hdXRoMi5nb29nbGVhcGlzLmNvbS90b2tlbiIsCiAgImF1dGhfcHJvdmlkZXJfeDUwOV9jZXJ0X3VybCI6ICJodHRwczovL3d3dy5nb29nbGVhcGlzLmNvbS9vYXV0aDIvdjEvY2VydHMiLAogICJjbGllbnRfeDUwOV9jZXJ0X3VybCI6ICJodHRwczovL3d3dy5nb29nbGVhcGlzLmNvbS9yb2JvdC92MS9tZXRhZGF0YS94NTA5L2dpdGh1Yi1hY3Rpb24tNjg0ODU3ODU4JTQwcm9ib3RpY3N0ZXN0LTM1NDQuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20iLAogICJ1bml2ZXJzZV9kb21haW4iOiAiZ29vZ2xlYXBpcy5jb20iCn0K","validAfterTime":"2023-12-04T20:54:17Z","validBeforeTime":"9999-12-31T23:59:59Z","keyAlgorithm":"KEY_ALG_RSA_2048","keyOrigin":"GOOGLE_PROVIDED","keyType":"USER_MANAGED"}
+[info] 
+[info] +  Created service account github-action-684857858 with Firebase Hosting admin permissions. 
+[debug] [2023-12-04T20:54:19.358Z] >>> [apiv2][query] PUT https://api.github.com/repos/Spartiates-3544/Website/actions/secrets/FIREBASE_SERVICE_ACCOUNT_ROBOTICSTEST_3544 [none]
+[debug] [2023-12-04T20:54:19.358Z] >>> [apiv2][body] PUT https://api.github.com/repos/Spartiates-3544/Website/actions/secrets/FIREBASE_SERVICE_ACCOUNT_ROBOTICSTEST_3544 {"encrypted_value":"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","key_id":"568250167242549743"}
+[debug] [2023-12-04T20:54:19.625Z] <<< [apiv2][status] PUT https://api.github.com/repos/Spartiates-3544/Website/actions/secrets/FIREBASE_SERVICE_ACCOUNT_ROBOTICSTEST_3544 201
+[debug] [2023-12-04T20:54:19.625Z] <<< [apiv2][body] PUT https://api.github.com/repos/Spartiates-3544/Website/actions/secrets/FIREBASE_SERVICE_ACCOUNT_ROBOTICSTEST_3544 {}
+[info] +  Uploaded service account JSON to GitHub as secret FIREBASE_SERVICE_ACCOUNT_ROBOTICSTEST_3544. 
+[info] i  You can manage your secrets at https://github.com/Spartiates-3544/Website/settings/secrets. 
+[info] 
+[info] 
+[info] +  Created workflow file C:\Users\Nicky Ly\Documents\GitHub\Website\.github/workflows/firebase-hosting-pull-request.yml 
+[info] 
+[info] +  Created workflow file C:\Users\Nicky Ly\Documents\GitHub\Website\.github/workflows/firebase-hosting-merge.yml 
+[info] 
+[info] i  Action required: Visit this URL to revoke authorization for the Firebase CLI GitHub OAuth App: 
+[info] https://github.com/settings/connections/applications/89cf50f02ac6aaed3484
+[info] i  Action required: Push any new workflow file(s) to your repo 
+[info] 
+=== Storage Setup
+[info] 
+[info] Firebase Storage Security Rules allow you to define how and when to allow
+[info] uploads and downloads. You can keep these rules in your project directory
+[info] and publish them with firebase deploy.
+[info] 
