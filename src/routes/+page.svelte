@@ -28,19 +28,6 @@
 		opacity: 30%;
 	}
 
-	.handwritten {
-		color: #ffffff;
-		font-family: 'Caveat', cursive;
-		font-size: 35px;
-		color: #ffcc01;
-		margin-top: -80px;
-		margin-left: 500px;
-	}
-
-	#teamNb {
-		transform: skew(-10deg, -15deg);
-	}
-
 	#fade {
 		z-index: 1;
 		position: absolute;
@@ -149,7 +136,8 @@
 		<div id="robotShowcase3d">
 			<img
 				src="https://media.discordapp.net/attachments/1051259930914594879/1103175329910100048/C9A2BB25-A139-4D3B-9C8D-EC49F61223CF.jpg?ex=6566bd16&is=65544816&hm=234b4db629f9926e31ccf49223c610509d34736044744dd17f05ecca2f714b3b&=&width=666&height=889"
-			/>
+				alt="we"
+				/>
 		</div>
 	</section>
 </main>
