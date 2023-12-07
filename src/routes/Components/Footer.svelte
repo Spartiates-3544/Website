@@ -38,6 +38,10 @@
         padding-top: 40px;
     }
 
+    #nav {
+        padding-right: 20px;
+    }
+
     #nav a{
         text-decoration: none;
         padding-right: 40px;
@@ -81,6 +85,7 @@
         display: grid;
         justify-content: end;
         color: var(--oppColor);
+        padding-left: 20px;
     }
 
     #credits{

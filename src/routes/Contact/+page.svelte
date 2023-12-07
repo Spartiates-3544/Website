@@ -15,7 +15,7 @@
         display: grid;
         grid-template-columns: repeat(2, 350px);
         margin-top: 100px;
-        margin-left: 100px;
+        margin-left: 7vw;
     }
 
     #socialsList{
@@ -39,6 +39,28 @@
     .contactHeader{
         font-size: 80%;
         opacity: 50%;
+    }
+
+    @media only screen and (max-width: 750px) {
+        main {
+            margin-top: 15vh;
+        }
+
+        #contacts{
+            margin-top: 60px;
+            grid-template-columns: 100%;
+            row-gap: 20px;
+        }
+
+        #socialsList ul li{
+            padding-bottom: 7px;
+        }
+    }
+
+    @media only screen and (max-width: 500px) {
+        #carouselContainer {
+            margin-top: -30px;
+        }
     }
 </style>
 

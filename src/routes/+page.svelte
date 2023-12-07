@@ -12,8 +12,10 @@
 	let carouselTopMargin = -30;
 	let gap = 10
 
-	$: if(outerWidth < 900){
+	$: if(((outerWidth < 900) && (outerWidth > 650)) || ((innerHeight < 850) && (innerHeight > 730))){
 		sizeFactor = 0.8;
+	} else if (outerWidth < 650 || innerHeight < 730){
+		sizeFactor = 0.6;
 	} else {
 		sizeFactor = 1;
 	}
@@ -31,8 +33,6 @@
 	$: if(200 > scrollY > 0 ){
 		arrowHeight = innerHeight - 385 + scrollY
 	}
-
-
 </script>
 
 <style>
@@ -50,6 +50,7 @@
 		font-size: calc(120px * var(--sizeFactor));
 		font-weight: 500;
 		margin-bottom: 0;
+		display: relative;
 	}
 
 	.subHeader {
@@ -59,6 +60,7 @@
 
 	.descriptions {
 		opacity: 30%;
+		width: 40vw;
 	}
 
 	#robotShowcaseContainer {
@@ -73,6 +75,8 @@
 	#robotShowcase3d {
 		display: grid;
 		justify-content: end;
+		padding-left: 50px;
+		max-height: 80vh;
 	}
 
 	#mainImgCarousel {
@@ -91,16 +95,26 @@
 		position: relative;	
 	}
 
-	#spartiates::after{
-		content: '3544 & 20274';
+	#teamNb{
 		position: absolute;
-		transform: skew(-10deg, -15deg);
-		font-family: 'Caveat', cursive;
+		right: -45px;
+		top: 55px;
+		transform: rotate(-90deg);
 		color: #ffcc01;
-		font-size: 30%;
-		width: 200px;
-		bottom: 10%;
-		right: -25%;
+	}
+
+	#teamNb::after, #teamNb::before{
+		position: absolute;
+		content: '3544 & 20274';
+		width: 100%;
+		right: 0;
+		bottom: 5px;
+		opacity: 20%;
+	}
+
+	#teamNb::before{
+		bottom: 11px;
+		opacity: 5%;
 	}
 
 	#footerContainer{
@@ -112,6 +126,11 @@
 		position: absolute;
 		bottom: 205px;
 		z-index: -1;
+	}
+
+	#robotShowcaseTxt{
+		display: grid;
+		place-content: center;
 	}
 
 	@media only screen and (max-width: 500px) {
@@ -132,14 +151,15 @@
 			margin-top: -15px;
 		}
 
-		#spartiates::after{
+		#teamNb{
 			font-family: 'EB Garamond', serif;
 			transform: none;
-			color: #fff;
-			bottom: -15px;
+			color: #fff;	
 			width: 100%;
+			font-size: 80%;
+			text-align: center;
+			top: 100px;
 			right: 0;
-			font-size: 20%;
 		}
 
 		#arrowContainer{
@@ -170,6 +190,10 @@
 			font-size: 300%;
 		}
 
+		#robotShowcase3d{
+			padding-left: 0;
+		}
+
 		#robotShowcase3d img{
 			border-radius: 10px;
 		}
@@ -184,8 +208,12 @@
 		}
 
 		#mainImgCarousel {
-		margin-top: 150px;
-	}
+			margin-top: 150px;
+		}
+
+		.descriptions {
+			width: 100%;
+		}
 	}
 </style>
 
@@ -193,7 +221,7 @@
 
 <main id="mainContainer" style="--sizeFactor: {sizeFactor}; --carouselTopMargin: {carouselTopMargin}">
 	<section id="slide1">
-		<p class="headers">We are {#if outerWidth > 500}<br/>{/if} the <i style="font-family: inherit;" id="spartiates">Spartiates</i></p>
+		<p class="headers">We are {#if outerWidth > 500}<br/>{/if} the <i style="font-family: inherit;" id="spartiates">Spartiates</i> <p id="teamNb">3544 & 20274</p>
 		<section id="mainImgCarousel">
 			<div id="arrowContainer">
 				{#if outerWidth < 500}
