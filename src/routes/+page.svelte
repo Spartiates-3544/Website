@@ -7,9 +7,10 @@
 	let scrollY
 	let sizeFactor = 1;
 	let arrowHeight;
-	let carouselImgHeight = 300;
-	let carouselImgWidth = 200;
+	let carouselImgHeight = 400;
+	let carouselImgWidth = 250;
 	let carouselTopMargin = -30;
+	let gap = 10
 
 	$: if(outerWidth < 900){
 		sizeFactor = 0.8;
@@ -17,10 +18,14 @@
 		sizeFactor = 1;
 	}
 
-	$: if(innerHeight > 0){
+	$: if(innerHeight > 0 & outerWidth < 500){
 		arrowHeight = innerHeight - 385;
 		carouselTopMargin = innerHeight / 5 - 200;
 		carouselImgHeight = innerHeight / 3;
+		carouselImgWidth = 150
+	} else {
+		carouselImgHeight = innerHeight / 2.5
+		carouselImgWidth = carouselImgHeight / 1.55
 	}
 
 	$: if(200 > scrollY > 0 ){
@@ -34,7 +39,7 @@
 	#mainContainer {
 		padding-left: 12vw;
 		padding-right: 12vw;
-		padding-top: 120px;
+		padding-top: 150px;
 		line-height: 1.2;
 		overflow: hidden;
 	}
@@ -56,23 +61,6 @@
 		opacity: 30%;
 	}
 
-	#fade {
-		z-index: 1;
-		position: absolute;
-		background-color: aqua;
-		width: 61vw;
-		height: 35vh;
-		background: linear-gradient(
-			to right,
-			#1a2121 10%,
-			rgba(0, 0, 0, 0) 15%,
-			rgba(0, 0, 0, 0) 95%,
-			#1a2121 100%
-		);
-		margin-top: -5px;
-		margin-left: -5px;
-	}
-
 	#robotShowcaseContainer {
 		display: grid;
 		grid-template-columns: auto auto;
@@ -88,15 +76,15 @@
 	}
 
 	#mainImgCarousel {
-		margin-top: 150px;
+		margin-top: 10px;
 		display: grid;
-		grid-template-columns: 12vw 60vw;
+		grid-template-columns: 100%;
 		grid-template-rows: 0;
-		height: 300px;
 	}
 
 	#slide1{
         height: 100vh;
+		position: relative;
     }
 
 	#spartiates{
@@ -117,6 +105,13 @@
 
 	#footerContainer{
 		margin-top: 400px;
+	}
+
+	#carousel{
+		width: 100%;
+		position: absolute;
+		bottom: 205px;
+		z-index: -1;
 	}
 
 	@media only screen and (max-width: 500px) {
@@ -160,8 +155,9 @@
 
 		#carousel{
 			width: 100vw;
-			margin-left: -24vw;
+			margin-left: -12vw;
 			margin-top: calc(var(--carouselTopMargin) * 1px);
+			position: unset;
 		}
 
 		#robotShowcaseContainer{
@@ -174,7 +170,6 @@
 			font-size: 300%;
 		}
 
-		
 		#robotShowcase3d img{
 			border-radius: 10px;
 		}
@@ -187,6 +182,10 @@
 		#footerContainer{
 			margin-top: 0;
 		}
+
+		#mainImgCarousel {
+		margin-top: 150px;
+	}
 	}
 </style>
 
@@ -197,20 +196,7 @@
 		<p class="headers">We are {#if outerWidth > 500}<br/>{/if} the <i style="font-family: inherit;" id="spartiates">Spartiates</i></p>
 		<section id="mainImgCarousel">
 			<div id="arrowContainer">
-				{#if outerWidth > 500}
-					<svg
-						width="200"
-						height="400"
-						viewBox="-70 0 100 200"
-						fill="none"
-						xmlns="http://www.w3.org/2000/svg"
-					>
-						<path
-							d="M12.4999 1.98352C12.4908 1.15514 11.8119 0.490988 10.9835 0.500091C10.1551 0.509194 9.49099 1.18811 9.50009 2.01648L12.4999 1.98352ZM10.9511 94.0723C11.5432 94.6516 12.4929 94.6411 13.0723 94.0489L22.5127 84.3987C23.092 83.8065 23.0816 82.8568 22.4894 82.2775C21.8972 81.6982 20.9475 81.7086 20.3682 82.3008L11.9767 90.8788L3.39868 82.4873C2.80649 81.908 1.8568 81.9184 1.27749 82.5106C0.698175 83.1028 0.708611 84.0525 1.3008 84.6318L10.9511 94.0723ZM9.50009 2.01648L10.5001 93.0165L13.4999 92.9835L12.4999 1.98352L9.50009 2.01648Z"
-							fill="#FFCC01"
-						/>
-					</svg>
-				{:else}
+				{#if outerWidth < 500}
 					<svg width="2" height={arrowHeight} viewBox="0 0 2 {arrowHeight}" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path d="M1 0L1.00002 {arrowHeight}" stroke="#FFCC01" stroke-width="2"/>
 					</svg>
@@ -219,12 +205,9 @@
 							<path d="M9 7C9 6.44772 8.55228 6 8 6C7.44772 6 7 6.44772 7 7L9 7ZM7.29289 8.70711C7.68342 9.09763 8.31658 9.09763 8.70711 8.70711L15.0711 2.34315C15.4616 1.95262 15.4616 1.31946 15.0711 0.928932C14.6805 0.538408 14.0474 0.538408 13.6569 0.928932L8 6.58579L2.34315 0.928932C1.95262 0.538408 1.31946 0.538408 0.928932 0.928932C0.538408 1.31946 0.538408 1.95262 0.928932 2.34315L7.29289 8.70711ZM7 7L7 8L9 8L9 7L7 7Z" fill="#FFCC01"/>
 						</svg>
 					</div>
-										
 				{/if}
 			</div>
-			
 			<div id="carousel">
-				{#if outerWidth > 500}<span id="fade"/>{/if}
 				<Carousel
 					components={[
 						'https://media.discordapp.net/attachments/1051259930914594879/1103175329910100048/C9A2BB25-A139-4D3B-9C8D-EC49F61223CF.jpg?ex=6566bd16&is=65544816&hm=234b4db629f9926e31ccf49223c610509d34736044744dd17f05ecca2f714b3b&=&width=666&height=889',
@@ -239,11 +222,12 @@
 						'https://media.discordapp.net/attachments/1051259930914594879/1103175329910100048/C9A2BB25-A139-4D3B-9C8D-EC49F61223CF.jpg?ex=6566bd16&is=65544816&hm=234b4db629f9926e31ccf49223c610509d34736044744dd17f05ecca2f714b3b&=&width=666&height=889'
 					]}
 					height={`${carouselImgHeight}px`}
-					gap={'20px'}
+					gap={`${gap}px`}
 					width={`${carouselImgWidth}px`}
 				/>
 			</div>
 		</section>
+
 	</section>
 
 	<section id="robotShowcaseContainer">
