@@ -2,11 +2,15 @@
     import Carousel from '../Components/Carousel.svelte';
 
     let outerWidth;
+    let innerHeight;
     let sizeFactor = 1;
     let scrollDirection = 'horizontal';
+    let topMargin = '-60vh'
 
-    $: if (outerWidth < 800) {
+    $: if (outerWidth < 800 && innerHeight > 550) {
         sizeFactor = 0.7
+    } else if (outerWidth < 800 && innerHeight < 550){
+        sizeFactor = 0.4
     } else {
         sizeFactor = 1
     }
@@ -18,7 +22,7 @@
     }
 </script>
 
-<svelte:window bind:outerWidth/>
+<svelte:window bind:outerWidth bind:innerHeight/>
 
 <style>
     main{
@@ -54,13 +58,13 @@
         }
 
         #thanksContainer {
-            margin-top: -60vh;
+            margin-top: var(--topMargin);
             padding-bottom: 5vh;
         }
 
         #thanks {
             text-align: center;
-            font-size: 300%;
+            font-size: calc(400% * var(--sizeFactor));
         }
 
         #carouselContainer {
@@ -87,7 +91,7 @@
     
 </style>
 
-<main style="--sizeFactor: {sizeFactor}">
+<main style="--sizeFactor: {sizeFactor}; --topMargin: {topMargin}">
     <section id="thanksContainer">
         <p id="thanks">Thank you to our sponsors!</p>
         {#if outerWidth > 500}
