@@ -1,3 +1,3 @@
 # Website
 
-Website made with SvelteKit
+SvelteKit website hosted on Firebase
