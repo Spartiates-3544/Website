@@ -47,7 +47,7 @@
         }
 
         #contacts{
-            margin-top: 60px;
+            margin-top: 7vh;
             grid-template-columns: 100%;
             row-gap: 20px;
         }
