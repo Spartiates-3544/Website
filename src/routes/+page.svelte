@@ -1,6 +1,33 @@
 <script>
 	import Footer from './Components/Footer.svelte';
 	import Carousel from './Components/Carousel.svelte';
+
+	let outerWidth;
+	let innerHeight;
+	let scrollY
+	let sizeFactor = 1;
+	let arrowHeight;
+	let carouselImgHeight = 300;
+	let carouselImgWidth = 200;
+	let carouselTopMargin = -30;
+
+	$: if(outerWidth < 900){
+		sizeFactor = 0.8;
+	} else {
+		sizeFactor = 1;
+	}
+
+	$: if(innerHeight > 0){
+		arrowHeight = innerHeight - 385;
+		carouselTopMargin = innerHeight / 5 - 200;
+		carouselImgHeight = innerHeight / 3;
+	}
+
+	$: if(200 > scrollY > 0 ){
+		arrowHeight = innerHeight - 385 + scrollY
+	}
+
+
 </script>
 
 <style>
@@ -9,12 +36,13 @@
 		padding-right: 12vw;
 		padding-top: 120px;
 		line-height: 1.2;
+		overflow: hidden;
 	}
 
 	.headers {
 		color: #ffffff;
 		font-family: 'EB Garamond', serif;
-		font-size: 120px;
+		font-size: calc(120px * var(--sizeFactor));
 		font-weight: 500;
 		margin-bottom: 0;
 	}
@@ -32,7 +60,7 @@
 		z-index: 1;
 		position: absolute;
 		background-color: aqua;
-		width: 60vw;
+		width: 61vw;
 		height: 35vh;
 		background: linear-gradient(
 			to right,
@@ -41,6 +69,8 @@
 			rgba(0, 0, 0, 0) 95%,
 			#1a2121 100%
 		);
+		margin-top: -5px;
+		margin-left: -5px;
 	}
 
 	#robotShowcaseContainer {
@@ -70,7 +100,7 @@
     }
 
 	#spartiates{
-		position: relative;
+		position: relative;	
 	}
 
 	#spartiates::after{
@@ -84,28 +114,117 @@
 		bottom: 10%;
 		right: -25%;
 	}
+
+	#footerContainer{
+		margin-top: 400px;
+	}
+
+	@media only screen and (max-width: 500px) {
+
+		#mainContainer {
+			padding-top: 10vh;
+		}
+
+		.headers {
+			text-align: center;
+			font-size: 200%;
+			display: flex;
+			flex-direction: column;
+		}
+
+		#spartiates {
+			font-size: 230%;
+			margin-top: -15px;
+		}
+
+		#spartiates::after{
+			font-family: 'EB Garamond', serif;
+			transform: none;
+			color: #fff;
+			bottom: -15px;
+			width: 100%;
+			right: 0;
+			font-size: 20%;
+		}
+
+		#arrowContainer{
+			margin-left: 38vw;
+			z-index: 5;
+			margin-top: -120px;
+		}
+		
+		#arrowHead{
+			margin-top: -16px;
+			margin-left: -7px;
+		}
+
+		#carousel{
+			width: 100vw;
+			margin-left: -24vw;
+			margin-top: calc(var(--carouselTopMargin) * 1px);
+		}
+
+		#robotShowcaseContainer{
+			grid-template-columns: 100%;
+			text-align: center;
+		}
+
+		#robotTitle{
+			margin-bottom: 25px;
+			font-size: 300%;
+		}
+
+		
+		#robotShowcase3d img{
+			border-radius: 10px;
+		}
+
+		.subHeader{
+			margin-top: 10px;
+			margin-bottom: 5px;
+		}
+
+		#footerContainer{
+			margin-top: 0;
+		}
+	}
 </style>
 
-<main id="mainContainer">
+<svelte:window bind:outerWidth bind:innerHeight bind:scrollY/>
+
+<main id="mainContainer" style="--sizeFactor: {sizeFactor}; --carouselTopMargin: {carouselTopMargin}">
 	<section id="slide1">
-		<p class="headers">We are <br /> the <i style="font-family: inherit;" id="spartiates">Spartiates</i></p>
+		<p class="headers">We are {#if outerWidth > 500}<br/>{/if} the <i style="font-family: inherit;" id="spartiates">Spartiates</i></p>
 		<section id="mainImgCarousel">
 			<div id="arrowContainer">
-				<svg
-					width="200"
-					height="400"
-					viewBox="-70 0 100 200"
-					fill="none"
-					xmlns="http://www.w3.org/2000/svg"
-				>
-					<path
-						d="M12.4999 1.98352C12.4908 1.15514 11.8119 0.490988 10.9835 0.500091C10.1551 0.509194 9.49099 1.18811 9.50009 2.01648L12.4999 1.98352ZM10.9511 94.0723C11.5432 94.6516 12.4929 94.6411 13.0723 94.0489L22.5127 84.3987C23.092 83.8065 23.0816 82.8568 22.4894 82.2775C21.8972 81.6982 20.9475 81.7086 20.3682 82.3008L11.9767 90.8788L3.39868 82.4873C2.80649 81.908 1.8568 81.9184 1.27749 82.5106C0.698175 83.1028 0.708611 84.0525 1.3008 84.6318L10.9511 94.0723ZM9.50009 2.01648L10.5001 93.0165L13.4999 92.9835L12.4999 1.98352L9.50009 2.01648Z"
-						fill="#FFCC01"
-					/>
-				</svg>
+				{#if outerWidth > 500}
+					<svg
+						width="200"
+						height="400"
+						viewBox="-70 0 100 200"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path
+							d="M12.4999 1.98352C12.4908 1.15514 11.8119 0.490988 10.9835 0.500091C10.1551 0.509194 9.49099 1.18811 9.50009 2.01648L12.4999 1.98352ZM10.9511 94.0723C11.5432 94.6516 12.4929 94.6411 13.0723 94.0489L22.5127 84.3987C23.092 83.8065 23.0816 82.8568 22.4894 82.2775C21.8972 81.6982 20.9475 81.7086 20.3682 82.3008L11.9767 90.8788L3.39868 82.4873C2.80649 81.908 1.8568 81.9184 1.27749 82.5106C0.698175 83.1028 0.708611 84.0525 1.3008 84.6318L10.9511 94.0723ZM9.50009 2.01648L10.5001 93.0165L13.4999 92.9835L12.4999 1.98352L9.50009 2.01648Z"
+							fill="#FFCC01"
+						/>
+					</svg>
+				{:else}
+					<svg width="2" height={arrowHeight} viewBox="0 0 2 {arrowHeight}" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M1 0L1.00002 {arrowHeight}" stroke="#FFCC01" stroke-width="2"/>
+					</svg>
+					<div id="arrowHead">
+						<svg width="16" height="9" viewBox="0 0 16 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M9 7C9 6.44772 8.55228 6 8 6C7.44772 6 7 6.44772 7 7L9 7ZM7.29289 8.70711C7.68342 9.09763 8.31658 9.09763 8.70711 8.70711L15.0711 2.34315C15.4616 1.95262 15.4616 1.31946 15.0711 0.928932C14.6805 0.538408 14.0474 0.538408 13.6569 0.928932L8 6.58579L2.34315 0.928932C1.95262 0.538408 1.31946 0.538408 0.928932 0.928932C0.538408 1.31946 0.538408 1.95262 0.928932 2.34315L7.29289 8.70711ZM7 7L7 8L9 8L9 7L7 7Z" fill="#FFCC01"/>
+						</svg>
+					</div>
+										
+				{/if}
 			</div>
+			
 			<div id="carousel">
-				<span id="fade" />
+				{#if outerWidth > 500}<span id="fade"/>{/if}
 				<Carousel
 					components={[
 						'https://media.discordapp.net/attachments/1051259930914594879/1103175329910100048/C9A2BB25-A139-4D3B-9C8D-EC49F61223CF.jpg?ex=6566bd16&is=65544816&hm=234b4db629f9926e31ccf49223c610509d34736044744dd17f05ecca2f714b3b&=&width=666&height=889',
@@ -119,29 +238,43 @@
 						'https://media.discordapp.net/attachments/1051259930914594879/1103175329910100048/C9A2BB25-A139-4D3B-9C8D-EC49F61223CF.jpg?ex=6566bd16&is=65544816&hm=234b4db629f9926e31ccf49223c610509d34736044744dd17f05ecca2f714b3b&=&width=666&height=889',
 						'https://media.discordapp.net/attachments/1051259930914594879/1103175329910100048/C9A2BB25-A139-4D3B-9C8D-EC49F61223CF.jpg?ex=6566bd16&is=65544816&hm=234b4db629f9926e31ccf49223c610509d34736044744dd17f05ecca2f714b3b&=&width=666&height=889'
 					]}
-					height={'300px'}
+					height={`${carouselImgHeight}px`}
 					gap={'20px'}
-					width={'200px'}
+					width={`${carouselImgWidth}px`}
 				/>
 			</div>
 		</section>
 	</section>
 
 	<section id="robotShowcaseContainer">
-		<div id="robotShowcaseTxt">
-			<p class="headers">Velocity</p>
-			<p class="subHeader">FRC 2023</p>
+		{#if outerWidth > 500}
+			<div id="robotShowcaseTxt">
+				<p class="headers">Velocity</p>	
+				<p class="subHeader">FRC - 2023</p>
+				<p class="descriptions">Tank drive, wheel size, 6 drive motors, falcon motors, 120lbs</p>
+			</div>
+			<div id="robotShowcase3d">
+				<img
+					src="https://media.discordapp.net/attachments/1051259930914594879/1103175329910100048/C9A2BB25-A139-4D3B-9C8D-EC49F61223CF.jpg?ex=6566bd16&is=65544816&hm=234b4db629f9926e31ccf49223c610509d34736044744dd17f05ecca2f714b3b&=&width=666&height=889"
+					alt="we"
+					width="100%"
+					/>
+			</div>
+		{:else}
+			<p class="headers" id="robotTitle">Velocity</p>
+			<div id="robotShowcase3d">
+				<img
+					src="https://media.discordapp.net/attachments/1051259930914594879/1103175329910100048/C9A2BB25-A139-4D3B-9C8D-EC49F61223CF.jpg?ex=6566bd16&is=65544816&hm=234b4db629f9926e31ccf49223c610509d34736044744dd17f05ecca2f714b3b&=&width=666&height=889"
+					alt="we"
+					width="100%"
+					/>
+			</div>
+			<p class="subHeader">FRC - 2023</p>
 			<p class="descriptions">Tank drive, wheel size, 6 drive motors, falcon motors, 120lbs</p>
-		</div>
-		<div id="robotShowcase3d">
-			<img
-				src="https://media.discordapp.net/attachments/1051259930914594879/1103175329910100048/C9A2BB25-A139-4D3B-9C8D-EC49F61223CF.jpg?ex=6566bd16&is=65544816&hm=234b4db629f9926e31ccf49223c610509d34736044744dd17f05ecca2f714b3b&=&width=666&height=889"
-				alt="we"
-				/>
-		</div>
+		{/if}
 	</section>
 </main>
 
-<section style="margin-top: 400px;">
+<section id="footerContainer">
 	<Footer />
 </section>

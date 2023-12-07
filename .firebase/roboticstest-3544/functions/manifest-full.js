@@ -10,7 +10,7 @@ return {
 	assets: new Set(["goob.png"]),
 	mimeTypes: {".png":"image/png"},
 	_: {
-		client: {"start":"_app/immutable/entry/start.45bc8561.js","app":"_app/immutable/entry/app.c3d1aa17.js","imports":["_app/immutable/entry/start.45bc8561.js","_app/immutable/chunks/scheduler.b0fd5642.js","_app/immutable/chunks/singletons.1cdf2be0.js","_app/immutable/entry/app.c3d1aa17.js","_app/immutable/chunks/scheduler.b0fd5642.js","_app/immutable/chunks/index.844eb1a2.js"],"stylesheets":[],"fonts":[]},
+		client: {"start":"_app/immutable/entry/start.b1dcefb3.js","app":"_app/immutable/entry/app.3b5fa1c1.js","imports":["_app/immutable/entry/start.b1dcefb3.js","_app/immutable/chunks/scheduler.b0fd5642.js","_app/immutable/chunks/singletons.f3f33d8a.js","_app/immutable/entry/app.3b5fa1c1.js","_app/immutable/chunks/scheduler.b0fd5642.js","_app/immutable/chunks/index.844eb1a2.js"],"stylesheets":[],"fonts":[]},
 		nodes: [
 			__memo(() => import('./nodes/0.js')),
 			__memo(() => import('./nodes/1.js')),
