@@ -23,7 +23,7 @@
 
     .title{
         margin-bottom: 15px;
-        color: #ffcc01;
+        color: #FFD25E;
         font-size: 120%;
     }
 

@@ -50,7 +50,7 @@
     }
 
     .optionContainer:hover .text{
-        color: #ffcc01;
+        color: #FFD25E;
 
     }
 
@@ -63,13 +63,17 @@
     }
 </style>
 
+<script>
+    let documentLink = 'https://weebified.github.io/'
+</script>
+
 <main>
     <section id="optionsContainer">
         <a class="optionContainer" href="./Ressources/Photos">
             <div id="gallery" class="imgContainer"></div>
             <p class="text">Photo gallery</p>
         </a>
-        <a class="optionContainer" href="./Ressources/Documents">
+        <a class="optionContainer" href="{documentLink}">
             <div id="documents" class="imgContainer"></div>
             <p class="text">Documents</p>
         </a>

@@ -20,11 +20,11 @@
     }
 
     section:hover p{
-        color: #ffcc01;
+        color: #FFD25E;
     }
 
     section:hover svg path{
-        fill: #ffcc01;
+        fill: #FFD25E;
     }
 </style>
 

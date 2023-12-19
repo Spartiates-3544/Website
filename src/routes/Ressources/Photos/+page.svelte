@@ -3,6 +3,7 @@
     import YearNav from '../../Components/YearNav.svelte';
 
     let numberPhotos = '49'
+    let outerWidth;
 </script>
 
 <style>
@@ -27,6 +28,8 @@
 
 </style>
 
+<svelte:window bind:outerWidth/>
+
 <main>
     <Carousel
 			components={[
@@ -49,7 +52,9 @@
             <section id="bottomNav">
                 <YearNav/>
                 <p id="numberPhotos">{numberPhotos} Photos</p>
+                {#if outerWidth > 500}
                 <p>Photo Gallery</p>
+                {/if}
             </section>        
         </section>
 

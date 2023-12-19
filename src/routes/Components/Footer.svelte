@@ -24,11 +24,11 @@
         animation-iteration-count: infinite;
         animation-duration: 30s;
         animation-timing-function: linear;
-        color: #FFCC01;
+        color: #FFD25E;
     }
 
     #rollingText p i {
-        color: #FFCC01;
+        color: #FFD25E;
     }
 
     #footerBottom{
@@ -50,7 +50,7 @@
     }
 
     #nav a:hover, #backToTop div:hover{
-        color: #FFCC01;
+        color: #FFD25E;
     }
 
     #navContainer{
@@ -97,8 +97,8 @@
     #credits::after{
         position: absolute;
         content: "weebified";
-        background-color: #FFCC01;
-        color: #1A2121;
+        background-color: #FFD25E;
+        color: #191D1B;
         bottom: 0;
         left: 0;
         width: 0;
@@ -161,7 +161,7 @@
 
     function arrowColor() {
         if(svgColor === '#fff'){
-            svgColor = '#FFCC01'
+            svgColor = '#FFD25E'
         } else {
             svgColor = '#fff'
         }

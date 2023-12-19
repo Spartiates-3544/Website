@@ -42,7 +42,7 @@
     }
 
     #contact a{
-        color: #ffcc01;
+        color: #FFD25E;
     }
 
     #carouselContainer{
@@ -79,7 +79,7 @@
             height: 50px;
             z-index: 1;
             position: absolute;
-            background: linear-gradient(to top, rgba(255, 255, 255, 0), #1A2121 90%);
+            background: linear-gradient(to top, rgba(255, 255, 255, 0), #191D1B 90%);
         }
 
         #carousel{

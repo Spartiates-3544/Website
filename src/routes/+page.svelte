@@ -1,6 +1,10 @@
 <script>
 	import Footer from './Components/Footer.svelte';
 	import Carousel from './Components/Carousel.svelte';
+	import * as THREE from 'three';
+	import { onMount } from 'svelte';
+	import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+	import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 	let outerWidth;
 	let innerHeight;
@@ -10,9 +14,10 @@
 	let carouselImgHeight = 400;
 	let carouselImgWidth = 250;
 	let carouselTopMargin = -30;
-	let gap = 10
+	let gap = 10;
+	let canvasElement;
 
-	$: if(((outerWidth < 900) && (outerWidth > 650)) || ((innerHeight < 850) && (innerHeight > 730))){
+	$: if(((outerWidth < 900) && (outerWidth > 650)) || ((innerHeight < 850) && (innerHeight > 730))){ //responsiveness
 		sizeFactor = 0.8;
 	} else if (outerWidth < 650 || innerHeight < 730){
 		sizeFactor = 0.6;
@@ -20,7 +25,7 @@
 		sizeFactor = 1;
 	}
 
-	$: if(innerHeight > 0 & outerWidth < 500){
+	$: if(innerHeight > 0 && outerWidth < 500){ //responsiveness
 		arrowHeight = innerHeight - 385;
 		carouselTopMargin = innerHeight / 5 - 200;
 		carouselImgHeight = innerHeight / 3;
@@ -30,9 +35,75 @@
 		carouselImgWidth = carouselImgHeight / 1.55
 	}
 
-	$: if(200 > scrollY > 0 ){
+	$: if(200 > scrollY > 0 ){ //mobileUi arrow follow
 		arrowHeight = innerHeight - 385 + scrollY
 	}
+
+	onMount(() => { //3d model renderer
+		const scene = new THREE.Scene();
+		scene.background
+
+		const loader = new GLTFLoader();
+
+		loader.load( '/test.gltf', function ( gltf ) {
+			gltf.scene.scale.set(8, 8, 8)
+			
+			scene.add( gltf.scene );
+		}, undefined, function ( error ) {
+			console.error( error );
+		});
+
+		let aspectRatioWidth;
+		let aspectRatioHeight;
+		let canvasWidth;
+		let canvasHeight;
+
+		if (outerWidth > 500){ //responsive values for aspect ratio and size
+			aspectRatioWidth = Math.min(window.innerWidth/3.1, 560);
+			aspectRatioHeight = window.innerHeight/1.2
+
+			canvasWidth = Math.min(window.innerWidth/3, 600);
+			canvasHeight = window.innerHeight/1.2;
+		} else {
+			aspectRatioWidth = window.innerWidth/1.32;
+			aspectRatioHeight = window.innerHeight/2;
+
+			canvasWidth = window.innerWidth/1.32;
+			canvasHeight = window.innerHeight/2;
+		}
+
+		const camera = new THREE.PerspectiveCamera( 75, aspectRatioWidth / aspectRatioHeight, 0.1, 1000 );
+		
+		const renderer = new THREE.WebGLRenderer({canvas: canvasElement, antialias: true, alpha: true});
+		renderer.setSize(canvasWidth, canvasHeight);
+
+		const controls = new OrbitControls( camera, renderer.domElement );
+
+		camera.position.set( 0, 0, 1 );
+		controls.autoRotate = true;
+		controls.update();
+
+		const light = new THREE.DirectionalLight(0xffffff, 1)
+		light.position.set (2,2,5)
+		scene.add(light)
+
+		const light2 = new THREE.DirectionalLight(0xffffff, 1)
+		light2.position.set (-2, -2, -4)
+		scene.add(light2)
+		
+		camera.position.z = 1;
+		
+		function animate() { //animation function
+			requestAnimationFrame( animate );
+			
+			controls.update();
+
+			renderer.render( scene, camera );
+		}
+		animate();
+	})
+
+
 </script>
 
 <style>
@@ -100,7 +171,7 @@
 		right: -45px;
 		top: 55px;
 		transform: rotate(-90deg);
-		color: #ffcc01;
+		color: #FFD25E;
 	}
 
 	#teamNb::after, #teamNb::before{
@@ -194,8 +265,8 @@
 			padding-left: 0;
 		}
 
-		#robotShowcase3d img{
-			border-radius: 10px;
+		#robotShowcase3d canvas{
+			border-radius: 20px;
 		}
 
 		.subHeader{
@@ -226,11 +297,11 @@
 			<div id="arrowContainer">
 				{#if outerWidth < 500}
 					<svg width="2" height={arrowHeight} viewBox="0 0 2 {arrowHeight}" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M1 0L1.00002 {arrowHeight}" stroke="#FFCC01" stroke-width="2"/>
+						<path d="M1 0L1.00002 {arrowHeight}" stroke="#FFD25E" stroke-width="2"/>
 					</svg>
 					<div id="arrowHead">
 						<svg width="16" height="9" viewBox="0 0 16 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path d="M9 7C9 6.44772 8.55228 6 8 6C7.44772 6 7 6.44772 7 7L9 7ZM7.29289 8.70711C7.68342 9.09763 8.31658 9.09763 8.70711 8.70711L15.0711 2.34315C15.4616 1.95262 15.4616 1.31946 15.0711 0.928932C14.6805 0.538408 14.0474 0.538408 13.6569 0.928932L8 6.58579L2.34315 0.928932C1.95262 0.538408 1.31946 0.538408 0.928932 0.928932C0.538408 1.31946 0.538408 1.95262 0.928932 2.34315L7.29289 8.70711ZM7 7L7 8L9 8L9 7L7 7Z" fill="#FFCC01"/>
+							<path d="M9 7C9 6.44772 8.55228 6 8 6C7.44772 6 7 6.44772 7 7L9 7ZM7.29289 8.70711C7.68342 9.09763 8.31658 9.09763 8.70711 8.70711L15.0711 2.34315C15.4616 1.95262 15.4616 1.31946 15.0711 0.928932C14.6805 0.538408 14.0474 0.538408 13.6569 0.928932L8 6.58579L2.34315 0.928932C1.95262 0.538408 1.31946 0.538408 0.928932 0.928932C0.538408 1.31946 0.538408 1.95262 0.928932 2.34315L7.29289 8.70711ZM7 7L7 8L9 8L9 7L7 7Z" fill="#FFD25E"/>
 						</svg>
 					</div>
 				{/if}
@@ -257,7 +328,6 @@
 		</section>
 
 	</section>
-
 	<section id="robotShowcaseContainer">
 		{#if outerWidth > 500}
 			<div id="robotShowcaseTxt">
@@ -265,22 +335,11 @@
 				<p class="subHeader">FRC - 2023</p>
 				<p class="descriptions">Tank drive, wheel size, 6 drive motors, falcon motors, 120lbs</p>
 			</div>
-			<div id="robotShowcase3d">
-				<img
-					src="https://media.discordapp.net/attachments/1051259930914594879/1103175329910100048/C9A2BB25-A139-4D3B-9C8D-EC49F61223CF.jpg?ex=6566bd16&is=65544816&hm=234b4db629f9926e31ccf49223c610509d34736044744dd17f05ecca2f714b3b&=&width=666&height=889"
-					alt="we"
-					width="100%"
-					/>
-			</div>
 		{:else}
 			<p class="headers" id="robotTitle">Velocity</p>
-			<div id="robotShowcase3d">
-				<img
-					src="https://media.discordapp.net/attachments/1051259930914594879/1103175329910100048/C9A2BB25-A139-4D3B-9C8D-EC49F61223CF.jpg?ex=6566bd16&is=65544816&hm=234b4db629f9926e31ccf49223c610509d34736044744dd17f05ecca2f714b3b&=&width=666&height=889"
-					alt="we"
-					width="100%"
-					/>
-			</div>
+		{/if}
+		<div id="robotShowcase3d"><canvas bind:this={canvasElement}></canvas></div>
+		{#if outerWidth < 500}
 			<p class="subHeader">FRC - 2023</p>
 			<p class="descriptions">Tank drive, wheel size, 6 drive motors, falcon motors, 120lbs</p>
 		{/if}

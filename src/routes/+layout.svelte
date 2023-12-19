@@ -129,7 +129,7 @@
 	}
 
 	#mobileNavMenu {
-		background-color: #1a2120;
+		background-color: #191D1B;
 		position: fixed;
 		width: 100vw;
 		height: 101vh;

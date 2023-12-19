@@ -28,7 +28,7 @@
     }
 
     #contacts section a:hover{
-        color: #ffcc01;
+        color: #FFD25E;
     }
 
     #contacts section a{
