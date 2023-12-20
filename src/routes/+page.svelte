@@ -5,6 +5,7 @@
 	import { onMount } from 'svelte';
 	import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 	import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+	import { cubicInOut } from 'svelte/easing';
 
 	let outerWidth;
 	let innerHeight;
@@ -16,6 +17,20 @@
 	let carouselTopMargin = -30;
 	let gap = 10;
 	let canvasElement;
+	let arrowHoverState = false;
+	let Color = "#fff";
+	let toggleMenuStatus = false;
+	let selected = 0;
+	let yearList = {
+		"FRC 2022 - 2023" : {"path" : "/test.gltf"},
+		"FRC 2021 - 2022" : {"path" : "/test2.gltf"}
+	}
+	
+	let rotation = 0;
+	let currentModel = yearList[Object.keys(yearList)[0]]["path"];
+
+	let models = [];
+	let yearListLength = Object.keys(yearList).length
 
 	$: if(((outerWidth < 900) && (outerWidth > 650)) || ((innerHeight < 850) && (innerHeight > 730))){ //responsiveness
 		sizeFactor = 0.8;
@@ -39,24 +54,27 @@
 		arrowHeight = innerHeight - 385 + scrollY
 	}
 
-	onMount(() => { //3d model renderer
-		const scene = new THREE.Scene();
-		scene.background
+	const scene = new THREE.Scene();
 
-		const loader = new GLTFLoader();
+	const loader = new GLTFLoader();
 
-		loader.load( '/test.gltf', function ( gltf ) {
+	function loadModel(path){
+		loader.load( path, function ( gltf ) {
 			gltf.scene.scale.set(8, 8, 8)
-			
-			scene.add( gltf.scene );
+			scene.remove(scene.children[1]) //resets the scene before adding the new object
+			scene.add( gltf.scene ); //adds the new object
 		}, undefined, function ( error ) {
 			console.error( error );
 		});
+	}
 
+	onMount(() => { //3d model renderer
 		let aspectRatioWidth;
 		let aspectRatioHeight;
 		let canvasWidth;
 		let canvasHeight;
+
+		loadModel(currentModel)
 
 		if (outerWidth > 500){ //responsive values for aspect ratio and size
 			aspectRatioWidth = Math.min(window.innerWidth/3.1, 560);
@@ -83,15 +101,11 @@
 		controls.autoRotate = true;
 		controls.update();
 
-		const light = new THREE.DirectionalLight(0xffffff, 1)
-		light.position.set (2,2,5)
+		const light = new THREE.HemisphereLight(0xffffff, 1)
+		light.position.set (0,1.5,1)
 		scene.add(light)
-
-		const light2 = new THREE.DirectionalLight(0xffffff, 1)
-		light2.position.set (-2, -2, -4)
-		scene.add(light2)
 		
-		camera.position.z = 1;
+		camera.position.set(0, 0, 1);
 		
 		function animate() { //animation function
 			requestAnimationFrame( animate );
@@ -103,9 +117,52 @@
 		animate();
 	})
 
+	//Color change for model change arrow
 
+	function arrowColor() {
+		arrowHoverState = !arrowHoverState
+	}
+
+	$: if (arrowHoverState === true) {
+		Color = '#FFD25E'
+	} else {
+		Color = "#fff"
+	}
+
+	//model selector
+
+	for (let i = 0; i < yearListLength; i++){
+		models.push(Object.keys(yearList)[i])
+	}
+
+	function toggleMenu() {
+		toggleMenuStatus = !toggleMenuStatus;
+		rotation += 180;
+	}
+
+	function currentSelect(index) {
+		selected = models.indexOf(index)
+		currentModel = yearList[Object.keys(yearList)[models.indexOf(index)]]["path"];
+		loadModel(currentModel)
+		toggleMenu()
+	}
+
+	function fadeSlide(node, { delay = 0, duration = 400, easing = cubicInOut }) { //fade in transition
+		const style = getComputedStyle(node);
+		const opacity = +style.opacity;
+		const height = parseFloat(style.height);
+
+		return {
+			delay,
+			duration,
+			easing,
+			css: (t) =>
+				`overflow: hidden;` +
+				`opacity: ${t * opacity + 0.1};` +
+				`height: ${t * height}px;` 
+		};
+	}
 </script>
-
 <style>
 	#mainContainer {
 		padding-left: 12vw;
@@ -127,11 +184,25 @@
 	.subHeader {
 		margin-top: 0;
 		font-weight: 600;
+		width: 150px;
+		cursor: pointer;
+		transition: 100ms;
+		user-select: none;
+	}
+
+	.subHeader:hover {
+		color: #FFD25E;
+	}
+
+	.subHeader svg{
+		transform: rotate(var(--rotation));
+		transition: 300ms;
 	}
 
 	.descriptions {
 		opacity: 30%;
 		width: 40vw;
+		padding-top: 5px;
 	}
 
 	#robotShowcaseContainer {
@@ -204,6 +275,25 @@
 		place-content: center;
 	}
 
+	.selectorMenu{
+		list-style-type: none;
+		margin-top: 5px;
+		position: absolute;
+		background-color: #191D1B;
+		z-index: 99;
+		width: 150px;
+		box-shadow: 10px 0 10px #191D1B;
+		cursor: pointer;
+	}
+
+	.selectorMenu li {
+		transition: 100ms;
+	}
+
+	.selectorMenu li:hover {
+		color: #FFD25E;
+	}
+
 	@media only screen and (max-width: 500px) {
 
 		#mainContainer {
@@ -271,7 +361,7 @@
 
 		.subHeader{
 			margin-top: 10px;
-			margin-bottom: 5px;
+			margin-bottom: 10px;
 		}
 
 		#footerContainer{
@@ -290,7 +380,7 @@
 
 <svelte:window bind:outerWidth bind:innerHeight bind:scrollY/>
 
-<main id="mainContainer" style="--sizeFactor: {sizeFactor}; --carouselTopMargin: {carouselTopMargin}">
+<main id="mainContainer" style="--sizeFactor: {sizeFactor}; --carouselTopMargin: {carouselTopMargin}; --rotation: {rotation}deg;">
 	<section id="slide1">
 		<p class="headers">We are {#if outerWidth > 500}<br/>{/if} the <i style="font-family: inherit;" id="spartiates">Spartiates</i> <p id="teamNb">3544 & 20274</p>
 		<section id="mainImgCarousel">
@@ -332,7 +422,20 @@
 		{#if outerWidth > 500}
 			<div id="robotShowcaseTxt">
 				<p class="headers">Velocity</p>	
-				<p class="subHeader">FRC - 2023</p>
+				<p class="subHeader" on:mouseenter={arrowColor} on:mouseleave={arrowColor} on:click={toggleMenu}>{Object.keys(yearList)[selected]}
+					<svg width="14" height="11" viewBox="0 0 20 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path style="transition: 100ms;" d="M9.11612 10.8839C9.60427 11.372 10.3957 11.372 10.8839 10.8839L18.8388 2.92893C19.327 2.44078 19.327 1.64932 18.8388 1.16116C18.3507 0.67301 17.5592 0.67301 17.0711 1.16116L10 8.23223L2.92893 1.16117C2.44078 0.67301 1.64932 0.67301 1.16116 1.16117C0.67301 1.64932 0.67301 2.44078 1.16116 2.92893L9.11612 10.8839ZM8.75 9L8.75 10L11.25 10L11.25 9L8.75 9Z" fill="{Color}"/>
+					</svg>
+					<section>
+						{#if toggleMenuStatus === true}
+							<ul class="selectorMenu" transition:fadeSlide={{ duration: 200, easing: cubicInOut }}>
+							{#each models as model}
+								<li on:click={() => currentSelect(model)}>{model}</li>
+							{/each}
+							</ul>
+						{/if}
+					</section>
+					
 				<p class="descriptions">Tank drive, wheel size, 6 drive motors, falcon motors, 120lbs</p>
 			</div>
 		{:else}
@@ -340,7 +443,11 @@
 		{/if}
 		<div id="robotShowcase3d"><canvas bind:this={canvasElement}></canvas></div>
 		{#if outerWidth < 500}
-			<p class="subHeader">FRC - 2023</p>
+			<p class="subHeader">FRC - 2023
+				<svg width="14" height="11" viewBox="0 0 20 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M9.11612 10.8839C9.60427 11.372 10.3957 11.372 10.8839 10.8839L18.8388 2.92893C19.327 2.44078 19.327 1.64932 18.8388 1.16116C18.3507 0.67301 17.5592 0.67301 17.0711 1.16116L10 8.23223L2.92893 1.16117C2.44078 0.67301 1.64932 0.67301 1.16116 1.16117C0.67301 1.64932 0.67301 2.44078 1.16116 2.92893L9.11612 10.8839ZM8.75 9L8.75 10L11.25 10L11.25 9L8.75 9Z" fill="white"/>
+				</svg>
+			</p>
 			<p class="descriptions">Tank drive, wheel size, 6 drive motors, falcon motors, 120lbs</p>
 		{/if}
 	</section>

@@ -5,8 +5,8 @@
     }
 
     .optionContainer{
-        height: 400px;
-        width: 290px;
+        height: calc(var(--sizeFactor) * 400px);
+        width: calc(var(--sizeFactor) * 290px);
         background-color: aliceblue;
         position: relative;
         cursor: pointer;
@@ -34,7 +34,7 @@
     .text{
         position: absolute;
         top: 37%;
-        font-size: 500%;
+        font-size: calc(var(--sizeFactor) * 500%);
         width: 200%;
         left: -50%;
         text-align: center;
@@ -59,15 +59,34 @@
         grid-template-columns: repeat(2, 15vw);
         place-content: center;
         column-gap: 20vw;
-        padding-top: calc(50vh - 250px);
+        padding-top: var(--centeringMargin);
     }
+
+    @media only screen and (max-width: 500px) {}
 </style>
 
 <script>
     let documentLink = 'https://weebified.github.io/'
+    let outerWidth;
+    let innerHeight = 0;
+    let sizeFactor = 1;
+    $: centeringMargin = Math.max(innerHeight / 2 - 240, 50);
+
+    $: if (1200 < outerWidth && outerWidth < 1500) {
+        sizeFactor = 0.8
+    } else if (950 < outerWidth && outerWidth < 1200) {
+        sizeFactor = 0.65
+    } else if (730 < outerWidth && outerWidth < 951) {
+        sizeFactor = 0.5
+    } else if (outerWidth < 730){
+        sizeFactor = 0.3
+    } else {
+        sizeFactor = 1;
+    }
 </script>
 
-<main>
+<svelte:window bind:outerWidth bind:innerHeight/>
+<main style="--sizeFactor: {sizeFactor}; --centeringMargin: {centeringMargin}px">
     <section id="optionsContainer">
         <a class="optionContainer" href="./Ressources/Photos">
             <div id="gallery" class="imgContainer"></div>
