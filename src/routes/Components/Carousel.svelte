@@ -1,5 +1,5 @@
 <script>
-    export let components, height, gap, width, borderRadius, direction;
+    export let components, height, gap, width, borderRadius, direction, speed;
 </script>
 
 <style>
@@ -25,7 +25,7 @@
         column-gap: var(--gap);
         height: var(--height);
         animation-name: scrolling;
-        animation-duration: 40s;
+        animation-duration: var(--speed);
         animation-timing-function: linear;
         animation-iteration-count: infinite; 
     }
@@ -48,7 +48,7 @@
     }
 </style>
 
-<div id="container" style="--componentsLength: {components.length}; --height: {height}; --gap: {gap}; --width: {width}; --borderRadius: {borderRadius};">
+<div id="container" style="--componentsLength: {components.length}; --height: {height}; --gap: {gap}; --width: {width}; --borderRadius: {borderRadius}; --speed: {speed}">
     {#if direction === 'vertical'}
         <div id="verticalImgContainer">
             {#each components as component}

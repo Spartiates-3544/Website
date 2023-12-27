@@ -6,6 +6,7 @@
 	import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 	import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 	import { cubicInOut } from 'svelte/easing';
+	import inViewport from "./intersection.js";
 
 	let outerWidth;
 	let innerHeight;
@@ -162,8 +163,18 @@
 				`height: ${t * height}px;` 
 		};
 	}
+
 </script>
 <style>
+	@keyframes reveal {
+		0%{
+			height: 100%;
+		}
+		100%{
+			height: 0%;
+		}
+	}
+
 	#mainContainer {
 		padding-left: 12vw;
 		padding-right: 12vw;
@@ -174,8 +185,8 @@
 
 	.headers {
 		color: #ffffff;
-		font-family: 'EB Garamond', serif;
-		font-size: calc(120px * var(--sizeFactor));
+		font-family: 'Bricolage Grotesque', sans-serif;
+		font-size: calc(130px * var(--sizeFactor));
 		font-weight: 500;
 		margin-bottom: 0;
 		display: relative;
@@ -200,9 +211,10 @@
 	}
 
 	.descriptions {
-		opacity: 30%;
+		color: #575A59;
 		width: 40vw;
 		padding-top: 5px;
+		font-weight: 600;
 	}
 
 	#robotShowcaseContainer {
@@ -294,6 +306,42 @@
 		color: #FFD25E;
 	}
 
+	.invisible {
+		opacity: 0;
+		transition: 300ms;
+	}
+
+	#aboutTxt{
+		font-size: 170%;
+		text-align: right;
+	}
+
+	#aboutHeader{
+		text-align: end;
+	}
+
+	.textAnimation, .textAnimationHeader{
+		position: relative;
+	}
+
+	.textAnimation::after, .textAnimationHeader::after{
+		content: ' ';
+		bottom: 0;
+		left: 0;
+		background: #191D1B;
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		z-index: 1;
+		animation-name: reveal;
+		animation-duration: 700ms;
+		animation-fill-mode: forwards;
+	}
+
+	.textAnimationHeader::after{
+		animation-duration: 1500ms;
+	}
+
 	@media only screen and (max-width: 500px) {
 
 		#mainContainer {
@@ -313,7 +361,7 @@
 		}
 
 		#teamNb{
-			font-family: 'EB Garamond', serif;
+			font-family: 'Bricolage Grotesque', sans-serif;
 			transform: none;
 			color: #fff;	
 			width: 100%;
@@ -382,7 +430,7 @@
 
 <main id="mainContainer" style="--sizeFactor: {sizeFactor}; --carouselTopMargin: {carouselTopMargin}; --rotation: {rotation}deg;">
 	<section id="slide1">
-		<p class="headers">We are {#if outerWidth > 500}<br/>{/if} the <i style="font-family: inherit;" id="spartiates">Spartiates</i> <p id="teamNb">3544 & 20274</p>
+		<p class="headers textAnimationHeader">We are {#if outerWidth > 500}<br/>{/if} the <i style="font-family: inherit;" id="spartiates">Spartiates</i> <p id="teamNb">3544 & 20274</p>
 		<section id="mainImgCarousel">
 			<div id="arrowContainer">
 				{#if outerWidth < 500}
@@ -413,16 +461,26 @@
 					height={`${carouselImgHeight}px`}
 					gap={`${gap}px`}
 					width={`${carouselImgWidth}px`}
+					speed={'40s'}
 				/>
 			</div>
 		</section>
+	</section>
+
+	<section id="about">
+		<p class="headers textAnimation" use:inViewport={"aboutHeader"} id="aboutHeader">About us</p>
+		<p id="aboutTxt" use:inViewport={"aboutTxt"} class="textAnimation">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis </p>
+	</section>
+
+	<section id="competitions">
 
 	</section>
+
 	<section id="robotShowcaseContainer">
 		{#if outerWidth > 500}
 			<div id="robotShowcaseTxt">
-				<p class="headers">Velocity</p>	
-				<p class="subHeader" on:mouseenter={arrowColor} on:mouseleave={arrowColor} on:click={toggleMenu}>{Object.keys(yearList)[selected]}
+				<p class="headers invisible textAnimation" use:inViewport>Velocity</p>	
+				<p class="subHeader invisible textAnimation" use:inViewport on:mouseenter={arrowColor} on:mouseleave={arrowColor} on:click={toggleMenu}>{Object.keys(yearList)[selected]}
 					<svg width="14" height="11" viewBox="0 0 20 12" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path style="transition: 100ms;" d="M9.11612 10.8839C9.60427 11.372 10.3957 11.372 10.8839 10.8839L18.8388 2.92893C19.327 2.44078 19.327 1.64932 18.8388 1.16116C18.3507 0.67301 17.5592 0.67301 17.0711 1.16116L10 8.23223L2.92893 1.16117C2.44078 0.67301 1.64932 0.67301 1.16116 1.16117C0.67301 1.64932 0.67301 2.44078 1.16116 2.92893L9.11612 10.8839ZM8.75 9L8.75 10L11.25 10L11.25 9L8.75 9Z" fill="{Color}"/>
 					</svg>
@@ -436,7 +494,7 @@
 						{/if}
 					</section>
 					
-				<p class="descriptions">Tank drive, wheel size, 6 drive motors, falcon motors, 120lbs</p>
+				<p class="descriptions invisible textAnimation" use:inViewport>Tank drive, wheel size, 6 drive motors, falcon motors, 120lbs</p>
 			</div>
 		{:else}
 			<p class="headers" id="robotTitle">Velocity</p>

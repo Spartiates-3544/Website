@@ -111,7 +111,7 @@
         font-size: 100%;
 	}
 
-	a:hover {
+	#desktopNav a:hover {
 		opacity: 30%;
 		cursor: pointer;
 	}

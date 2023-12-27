@@ -119,6 +119,7 @@
 	        	width={'500px'}
                 borderRadius={'5px'}
                 direction={scrollDirection}
+                speed={'40s'}
 	        />
         </div>
     </section>

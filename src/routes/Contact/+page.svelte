@@ -82,6 +82,7 @@
 			height={'40vh'}
 			gap={'20px'}
 			width={'250px'}
+            speed={'40s'}
 		/>
 
         <section id="contacts">
