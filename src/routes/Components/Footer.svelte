@@ -120,6 +120,8 @@
 
         #copyright{
             display: block;
+            padding-top: 10px;
+            padding-left: 0;
         }
 
         #footerBottom{
@@ -208,7 +210,7 @@
     </section>
 
     <section id="bottomNotes">
-        <p>Made with love by&nbsp<a href="https://weebified.github.io" id="credits">Nicky Ly</a></p>
+        <p>Made with love by&nbsp<a href="https://weebified.github.io" id="credits">Nicky Ly</a> with SvelteKit, ThreeJS & 3 cups of coffee</p>
         <p id="copyright">Spartiates 2023 © Copyright</p>
     </section>
 

@@ -51,7 +51,6 @@
 
     .optionContainer:hover .text{
         color: #FFD25E;
-
     }
 
     #optionsContainer{
@@ -62,7 +61,18 @@
         padding-top: var(--centeringMargin);
     }
 
-    @media only screen and (max-width: 500px) {}
+    @media only screen and (max-width: 500px) {
+        main{
+            height: 90vh;
+        }
+
+        #optionsContainer{
+            grid-template-columns: 0;
+            row-gap: 5vh;
+            padding-top: calc(var(--sizeFactor) * 10vh);
+            margin-left: calc(var(--sizeFactor) * -290px);
+        }
+    }
 </style>
 
 <script>
@@ -78,8 +88,10 @@
         sizeFactor = 0.65
     } else if (730 < outerWidth && outerWidth < 951) {
         sizeFactor = 0.5
-    } else if (outerWidth < 730){
+    } else if (500 < outerWidth && outerWidth < 731){
         sizeFactor = 0.3
+    } else if (outerWidth < 500) {
+        sizeFactor = 0.6
     } else {
         sizeFactor = 1;
     }

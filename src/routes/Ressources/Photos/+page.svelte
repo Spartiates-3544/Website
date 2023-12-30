@@ -47,6 +47,7 @@
 			height={'400px'}
 			gap={'20px'}
 			width={'280px'}
+            speed={'40s'}
 		/>
         <section id="bottomNavContainer">
             <section id="bottomNav">

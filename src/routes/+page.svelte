@@ -33,6 +33,8 @@
 	let models = [];
 	let yearListLength = Object.keys(yearList).length
 
+	let competitions = ["FRC - 3544", "BetaBot - 3544", "FTC - 20274"]
+
 	$: if(((outerWidth < 900) && (outerWidth > 650)) || ((innerHeight < 850) && (innerHeight > 730))){ //responsiveness
 		sizeFactor = 0.8;
 	} else if (outerWidth < 650 || innerHeight < 730){
@@ -175,6 +177,15 @@
 		}
 	}
 
+	@keyframes rollingText{
+		from{
+			transform: translateX(0%);
+		}
+		to{
+			transform: translateX(-30%);
+		}
+	}
+
 	#mainContainer {
 		padding-left: 12vw;
 		padding-right: 12vw;
@@ -222,7 +233,7 @@
 		grid-template-columns: auto auto;
 		grid-template-rows: auto;
 		width: 100%;
-		margin-top: 100px;
+		margin-top: 200px;
 		margin-bottom: 100px;
 	}
 
@@ -412,6 +423,10 @@
 			margin-bottom: 10px;
 		}
 
+		.subHeader:hover{
+			color: #fff;
+		}
+
 		#footerContainer{
 			margin-top: 0;
 		}
@@ -422,6 +437,35 @@
 
 		.descriptions {
 			width: 100%;
+		}
+
+		#aboutHeader{
+			text-align: center;
+			font-size: 300%;
+			padding-bottom: 10px;
+		}
+
+		#aboutTxt{
+			font-size: 100%;
+			text-align: center;
+			padding-bottom: 50px;
+		}
+
+		.subHeader{
+			width: 100%;
+		}
+
+		.selectorMenu{
+			width: 100%;
+			left: -1vw;
+		}
+
+		.selectorMenu li{
+			padding-bottom: 10px;
+		}
+
+		.selectorMenu li:hover {
+		color: #fff;
 		}
 	}
 </style>
@@ -468,12 +512,8 @@
 	</section>
 
 	<section id="about">
-		<p class="headers textAnimation" use:inViewport={"aboutHeader"} id="aboutHeader">About us</p>
-		<p id="aboutTxt" use:inViewport={"aboutTxt"} class="textAnimation">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis </p>
-	</section>
-
-	<section id="competitions">
-
+		<p class="headers textAnimation" use:inViewport id="aboutHeader">About us</p>
+		<p id="aboutTxt" use:inViewport class="textAnimation">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis </p>
 	</section>
 
 	<section id="robotShowcaseContainer">
@@ -497,16 +537,24 @@
 				<p class="descriptions invisible textAnimation" use:inViewport>Tank drive, wheel size, 6 drive motors, falcon motors, 120lbs</p>
 			</div>
 		{:else}
-			<p class="headers" id="robotTitle">Velocity</p>
+			<p class="headers textAnimation" id="robotTitle" use:inViewport>Velocity</p>
 		{/if}
 		<div id="robotShowcase3d"><canvas bind:this={canvasElement}></canvas></div>
 		{#if outerWidth < 500}
-			<p class="subHeader">FRC - 2023
-				<svg width="14" height="11" viewBox="0 0 20 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-					<path d="M9.11612 10.8839C9.60427 11.372 10.3957 11.372 10.8839 10.8839L18.8388 2.92893C19.327 2.44078 19.327 1.64932 18.8388 1.16116C18.3507 0.67301 17.5592 0.67301 17.0711 1.16116L10 8.23223L2.92893 1.16117C2.44078 0.67301 1.64932 0.67301 1.16116 1.16117C0.67301 1.64932 0.67301 2.44078 1.16116 2.92893L9.11612 10.8839ZM8.75 9L8.75 10L11.25 10L11.25 9L8.75 9Z" fill="white"/>
-				</svg>
-			</p>
-			<p class="descriptions">Tank drive, wheel size, 6 drive motors, falcon motors, 120lbs</p>
+		<p class="subHeader invisible textAnimation" use:inViewport on:click={toggleMenu}>{Object.keys(yearList)[selected]}
+			<svg width="14" height="11" viewBox="0 0 20 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path style="transition: 100ms;" d="M9.11612 10.8839C9.60427 11.372 10.3957 11.372 10.8839 10.8839L18.8388 2.92893C19.327 2.44078 19.327 1.64932 18.8388 1.16116C18.3507 0.67301 17.5592 0.67301 17.0711 1.16116L10 8.23223L2.92893 1.16117C2.44078 0.67301 1.64932 0.67301 1.16116 1.16117C0.67301 1.64932 0.67301 2.44078 1.16116 2.92893L9.11612 10.8839ZM8.75 9L8.75 10L11.25 10L11.25 9L8.75 9Z" fill="{Color}"/>
+			</svg>
+			<section>
+				{#if toggleMenuStatus === true}
+					<ul class="selectorMenu" transition:fadeSlide={{ duration: 200, easing: cubicInOut }}>
+					{#each models as model}
+						<li on:click={() => currentSelect(model)}>{model}</li>
+					{/each}
+					</ul>
+				{/if}
+			</section>
+			<p class="descriptions textAnimation" use:inViewport>Tank drive, wheel size, 6 drive motors, falcon motors, 120lbs</p>
 		{/if}
 	</section>
 </main>
