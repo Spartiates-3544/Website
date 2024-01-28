@@ -49,7 +49,7 @@
 		position: absolute;
 		z-index: 1;
 		animation-name: reveal;
-		animation-duration: 1300ms;
+		animation-duration: 1000ms;
 		animation-fill-mode: forwards;
 	}
 </style>

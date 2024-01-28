@@ -115,7 +115,7 @@
 
         .textAnimation::after{
 		    animation-duration: 0ms;
-	}
+	    }
     }
 </style>
 
