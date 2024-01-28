@@ -1,8 +1,11 @@
 <script>
 	import { cubicInOut } from 'svelte/easing';
+	import { goto } from '$app/navigation';
 
 	let outerWidth;
 	let mobileNavStatus = false;
+	let opacity = 0;
+	let index = -1;
 
 	function mobileNav() {
 		mobileNavStatus = !mobileNavStatus;
@@ -23,11 +26,23 @@
 				`height: ${t * height}px;` 
 		};
 	}
+
+	function nav(target) {
+		index = 100;
+		opacity = 1;
+		setTimeout(() => {
+			goto(target)
+			setTimeout(() => {
+				index = -1
+				opacity = 0;
+			}, 100);
+		}, 300);
+	}
 </script>
 
 <svelte:window bind:outerWidth/>
 
-<nav>
+<nav style="--opacity: {opacity}; --index: {index}">
 	{#if outerWidth < 500}
 		<div id="burgerMenu">
 			<!-- svelte-ignore a11y-no-static-element-interactions -->
@@ -79,11 +94,11 @@
 		</div>
 	{:else}
 		<div id="desktopNav">
-			<a href="/">Home</a>
-			<a href="https://www.chiefdelphi.com/u/hyute/summary">Blog</a>
-			<a href="/Ressources">Resources</a>
-			<a href="/Sponsors">Sponsors</a>
-			<a href="/Contact">Contact Us</a>
+			<div on:click={() => nav('/') }>Home</div>
+			<div on:click={() => {window.open('https://www.chiefdelphi.com/u/hyute/summary')} }>Blog</div>
+			<div on:click={() => nav('/Ressources') }>Resources</div>
+			<div on:click={() => nav('/Sponsors') }>Sponsors</div>
+			<div on:click={() => nav('/Contact') }>Contact Us</div>
 		</div>
 	{/if}
 </nav>
@@ -96,11 +111,28 @@
 	nav {
 		display: grid;
 		place-items: center;
-		padding-top: 10px;
+		padding-top: 0;
 		z-index: 99;
 	}
 
-	#desktopNav a {
+	#desktopNav {
+		display: flex;
+	}
+
+	#desktopNav::after{
+		content: ' ';
+		background-color: #191D1B;
+		width: 100%;
+		height: 100%;
+		position: fixed;
+		left: 0;
+		top: 0;
+		z-index: var(--index);
+		opacity: var(--opacity);
+		transition: 300ms;
+	}
+
+	#desktopNav div {
 		font-family: 'Poppins', sans-serif;
 		text-decoration: none;
 		font-weight: 500;
@@ -111,7 +143,7 @@
         font-size: 100%;
 	}
 
-	#desktopNav a:hover {
+	#desktopNav div:hover {
 		opacity: 30%;
 		cursor: pointer;
 	}
@@ -124,7 +156,7 @@
 
 	#mobileNav {
 		padding-left: 30px;
-		padding-top: 25px;
+		padding-top: 35px;
 		width: 30px;
 	}
 

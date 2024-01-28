@@ -361,7 +361,7 @@
 
 		.headers {
 			text-align: center;
-			font-size: 200%;
+			font-size: 170%;
 			display: flex;
 			flex-direction: column;
 		}
@@ -465,7 +465,11 @@
 		}
 
 		.selectorMenu li:hover {
-		color: #fff;
+			color: #fff;
+		}
+
+		.textAnimationHeader::after {
+			animation-duration: 0ms;
 		}
 	}
 </style>
@@ -488,7 +492,7 @@
 					</div>
 				{/if}
 			</div>
-			<div id="carousel">
+			<div id="carousel" class="textAnimationHeader">
 				<Carousel
 					components={[
 						'https://media.discordapp.net/attachments/1051259930914594879/1103175329910100048/C9A2BB25-A139-4D3B-9C8D-EC49F61223CF.jpg?ex=6566bd16&is=65544816&hm=234b4db629f9926e31ccf49223c610509d34736044744dd17f05ecca2f714b3b&=&width=666&height=889',

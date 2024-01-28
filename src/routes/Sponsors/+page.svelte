@@ -25,6 +25,15 @@
 <svelte:window bind:outerWidth bind:innerHeight/>
 
 <style>
+    @keyframes reveal {
+		0%{
+			height: 100%;
+		}
+		100%{
+			height: 0%;
+		}
+	}
+
     main{
         display: grid;
         place-items: center;
@@ -49,6 +58,24 @@
         overflow: hidden;
         width: 100%;
     }
+
+    .textAnimation{
+		position: relative;
+	}
+
+	.textAnimation::after{
+		content: ' ';
+		bottom: 0;
+		left: 0;
+		background: #191D1B;
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		z-index: 1;
+		animation-name: reveal;
+		animation-duration: 700ms;
+		animation-fill-mode: forwards;
+	}
 
     @media only screen and (max-width: 500px) {
         main {
@@ -93,14 +120,14 @@
 
 <main style="--sizeFactor: {sizeFactor}; --topMargin: {topMargin}">
     <section id="thanksContainer">
-        <p id="thanks">Thank you to our sponsors!</p>
+        <p id="thanks" class="textAnimation">Thank you to our sponsors!</p>
         {#if outerWidth > 500}
-            <p id="contact">If you'd like to sponsor us, please contact us <a href="../Contact">here</a></p>
+            <p id="contact" class="textAnimation">If you'd like to sponsor us, please contact us <a href="../Contact">here</a></p>
         {/if}
     </section>
     <section id="carouselContainer">
         <span id="carouselFade"></span>
-        <div id="carousel">
+        <div id="carousel" class="textAnimation">
             <Carousel
 	        	components={[
 	        		'https://media.discordapp.net/attachments/1051259930914594879/1103175329910100048/C9A2BB25-A139-4D3B-9C8D-EC49F61223CF.jpg?ex=6566bd16&is=65544816&hm=234b4db629f9926e31ccf49223c610509d34736044744dd17f05ecca2f714b3b&=&width=666&height=889',

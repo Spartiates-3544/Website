@@ -7,6 +7,15 @@
 </script>
 
 <style>
+    @keyframes reveal {
+		0%{
+			height: 100%;
+		}
+		100%{
+			height: 0%;
+		}
+	}
+
     main{
         margin-top: calc(50vh - 240px);
     }
@@ -26,12 +35,30 @@
         font-size: 110%;
     }
 
+    .textAnimation{
+		position: relative;
+	}
+
+	.textAnimation::after{
+		content: ' ';
+		bottom: 0;
+		left: 0;
+		background: #191D1B;
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		z-index: 1;
+		animation-name: reveal;
+		animation-duration: 1300ms;
+		animation-fill-mode: forwards;
+	}
 </style>
 
 <svelte:window bind:outerWidth/>
 
 <main>
-    <Carousel
+    <div class="textAnimation">
+         <Carousel
 			components={[
 				'https://media.discordapp.net/attachments/1051259930914594879/1103175329910100048/C9A2BB25-A139-4D3B-9C8D-EC49F61223CF.jpg?ex=6566bd16&is=65544816&hm=234b4db629f9926e31ccf49223c610509d34736044744dd17f05ecca2f714b3b&=&width=666&height=889',
 				'https://media.discordapp.net/attachments/1051259930914594879/1096886608747311275/IMG_1169.jpg?ex=656b8bc2&is=655916c2&hm=46eebcbfb5c2ca1bac2924d93c243b93e8813e3a2a3d6d9791334d9e68bbf6f5&=&width=499&height=889',
@@ -49,7 +76,9 @@
 			width={'280px'}
             speed={'40s'}
 		/>
-        <section id="bottomNavContainer">
+    </div>
+   
+        <section id="bottomNavContainer" class="textAnimation">
             <section id="bottomNav">
                 <YearNav/>
                 <p id="numberPhotos">{numberPhotos} Photos</p>
