@@ -106,7 +106,7 @@ const options = {
   root: Root,
   service_worker: false,
   templates: {
-    app: ({ head, body, assets: assets2, nonce, env }) => '<!DOCTYPE html>\n<html lang="en">\n\n<head>\n	<meta charset="utf-8" />\n	<link rel="icon" href="' + assets2 + '/goob.png" /> <!--UPDATE IN FINAL VERSION-->\n	<title>goob</title> <!--UPDATE IN FINAL VERSION-->\n	<meta name="viewport" content="width=device-width" />\n	' + head + `
+    app: ({ head, body, assets: assets2, nonce, env }) => '<!DOCTYPE html>\n<html lang="en">\n\n<head>\n	<meta charset="utf-8" />\n	<link rel="icon" href="' + assets2 + '/goob.png" /> <!--UPDATE IN FINAL VERSION-->\n	<title>Spartiates</title>\n	<meta name="viewport" content="width=device-width" />\n	<meta name="name" content="Spartiates 3544 & 20274">\n	<meta name="description" content="We are a robotics team from the secondary school of Calixa-Lavalée in Montreal, Quebec. We mainly participate in FRC and FTC competitions as teams 3544 and 20274 respectively">\n	' + head + `
 
 	<style>
 		@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz@12..96&family=Poppins&display=swap');
@@ -230,7 +230,7 @@ const options = {
 		<div class="error">
 			<span class="status">` + status + '</span>\n			<div class="message">\n				<h1>' + message + "</h1>\n			</div>\n		</div>\n	</body>\n</html>\n"
   },
-  version_hash: "102mke"
+  version_hash: "7irbr3"
 };
 function get_hooks() {
   return {};
