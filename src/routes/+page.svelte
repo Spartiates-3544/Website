@@ -517,7 +517,7 @@
 
 	<section id="about">
 		<p class="headers textAnimation" use:inViewport id="aboutHeader">About us</p>
-		<p id="aboutTxt" use:inViewport class="textAnimation">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis </p>
+		<p id="aboutTxt" use:inViewport class="textAnimation">We are a robotics team from the secondary school of Calixa-Lavalée mainly participating in FRC and FTC competitions as teams 3544 and 20274 respectively</p>
 	</section>
 
 	<section id="robotShowcaseContainer">
